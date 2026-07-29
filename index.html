@@ -81,21 +81,21 @@ a{color:inherit;text-decoration:none}
 
 /* center stage */
 main{flex:1;display:grid;place-items:center;padding:40px 22px}
-.stack{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center}
-.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+.stack{width:100%;max-width:444px;display:flex;flex-direction:column;align-items:center}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;
   color:#8ea3ff;margin:28px 0 0}
-h1{font-size:27px;letter-spacing:-.02em;font-weight:780;margin:9px 0 0;text-align:center}
-.sub{color:var(--muted);font-size:14.5px;margin:8px 0 0;text-align:center;text-wrap:balance}
+h1{font-size:31px;letter-spacing:-.02em;font-weight:780;margin:11px 0 0;text-align:center}
+.sub{color:var(--muted);font-size:16px;margin:10px 0 0;text-align:center;text-wrap:balance}
 
 /* card */
-.card{width:100%;margin-top:26px;background:linear-gradient(180deg,#0b0b15,#060609);
-  border:1px solid var(--line);border-radius:18px;padding:24px;position:relative;
+.card{width:100%;margin-top:28px;background:linear-gradient(180deg,#0b0b15,#060609);
+  border:1px solid var(--line);border-radius:18px;padding:27px;position:relative;
   box-shadow:0 30px 80px -34px rgba(0,0,0,.9)}
 .card::before{content:"";position:absolute;inset:0;border-radius:18px;padding:1px;pointer-events:none;
   background:linear-gradient(180deg,rgba(47,84,255,.5),transparent 42%);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
 
-.btn{width:100%;border:0;cursor:pointer;font:inherit;font-weight:650;border-radius:12px;padding:14px;
+.btn{width:100%;border:0;cursor:pointer;font:inherit;font-weight:650;font-size:16.5px;border-radius:12px;padding:15px;
   display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:transform .15s,filter .2s,border-color .2s}
 .btn:active{transform:translateY(1px)}
 .btn-p{background:var(--grad);color:#fff;box-shadow:0 12px 30px -12px rgba(47,84,255,.9),inset 0 1px 0 rgba(255,255,255,.22)}
@@ -108,19 +108,19 @@ h1{font-size:27px;letter-spacing:-.02em;font-weight:780;margin:9px 0 0;text-alig
 .or::before,.or::after{content:"";flex:1;height:1px;background:var(--line2)}
 
 /* fields */
-.field{margin-bottom:12px}
-.field label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px;letter-spacing:.02em}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;color:var(--muted);margin:0 0 7px;letter-spacing:.02em}
 .field input{width:100%;background:#05050c;border:1px solid var(--line);border-radius:11px;
-  padding:12px 13px;color:var(--ink);font:inherit;font-size:14.5px;outline:none;transition:border-color .18s,box-shadow .18s}
+  padding:14px 15px;color:var(--ink);font:inherit;font-size:16px;outline:none;transition:border-color .18s,box-shadow .18s}
 .field input::placeholder{color:#4f5470}
 .field input:focus{border-color:rgba(47,84,255,.65);box-shadow:0 0 0 3px rgba(47,84,255,.16)}
-.rowx{display:flex;align-items:center;justify-content:space-between;margin:2px 0 16px;font-size:12.5px}
-.rowx label{display:flex;align-items:center;gap:7px;color:var(--muted);cursor:pointer}
-.rowx input{accent-color:var(--blue);width:14px;height:14px}
+.rowx{display:flex;align-items:center;justify-content:space-between;margin:3px 0 18px;font-size:13.5px}
+.rowx label{display:flex;align-items:center;gap:8px;color:var(--muted);cursor:pointer}
+.rowx input{accent-color:var(--blue);width:15px;height:15px}
 .rowx a{color:#8ea3ff}
 .rowx a:hover{color:#b6c4ff}
 
-.req{margin-top:20px;text-align:center;font-size:13.5px;color:var(--muted)}
+.req{margin-top:22px;text-align:center;font-size:14.5px;color:var(--muted)}
 .req a{color:#9fb0ff;font-weight:600}
 .req a:hover{color:#c6d1ff}
 
@@ -169,7 +169,7 @@ footer .links{margin-bottom:8px;display:flex;gap:18px;justify-content:center;fle
 footer .links a:hover{color:var(--muted)}
 footer .fine{max-width:60ch;margin:0 auto}
 
-@media(max-width:440px){ .card{padding:20px} h1{font-size:24px} }
+@media(max-width:440px){ .card{padding:22px} h1{font-size:27px} }
 </style></head>
 <body>
 
