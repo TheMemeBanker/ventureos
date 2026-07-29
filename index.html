@@ -4,91 +4,83 @@
 <title>VentureOS — Investor Portal</title>
 <style>
 :root{
-  --bg:#07060d; --panel:#100e1c; --panel2:#15132449;
-  --ink:#f5f3fc; --muted:#9a93b4; --faint:#6d6789;
-  --line:rgba(147,130,210,.14); --line2:rgba(147,130,210,.09);
-  --violet:#9d6bff; --violet-d:#6d3ff5;
-  --emerald:#16c98a;
-  --grad:linear-gradient(135deg,#a877ff 0%,#6d3ff5 100%);
-  --grad-soft:linear-gradient(135deg,rgba(157,107,255,.18),rgba(109,63,245,.06));
+  --bg:#000005; --panel:#080810; --ink:#f4f6ff; --muted:#8b90a6; --faint:#5a5f74;
+  --line:rgba(120,140,255,.15); --line2:rgba(120,140,255,.09);
+  --blue:#2f54ff; --blue-lo:#1e3cf0; --blue-hi:#4d6bff;
+  --grad:linear-gradient(135deg,#4162ff 0%,#1e3cf0 100%);
+  --grad-soft:linear-gradient(135deg,rgba(47,84,255,.16),rgba(30,60,240,.04));
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
 body{
   background:
-    radial-gradient(900px 560px at 50% -120px,rgba(120,72,230,.30),transparent 60%),
-    radial-gradient(700px 500px at 50% 120%,rgba(88,60,220,.14),transparent 60%),
+    radial-gradient(760px 520px at 50% -80px,rgba(38,70,255,.20),transparent 62%),
+    radial-gradient(620px 460px at 50% 124%,rgba(30,60,240,.12),transparent 62%),
     var(--bg);
   color:var(--ink);
   font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
   min-height:100vh;display:flex;flex-direction:column;
 }
-.mono{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace}
 a{color:inherit;text-decoration:none}
 
-/* brand */
-.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em;justify-content:center}
-.tile{width:38px;height:38px;border-radius:10px;background:var(--grad);display:grid;place-items:center;
-  box-shadow:0 8px 22px -6px rgba(140,80,255,.7),inset 0 1px 0 rgba(255,255,255,.35)}
-.tile b{font-family:ui-monospace,monospace;font-size:18px;color:#fff;transform:translateY(-1px)}
-.brand .v{font-size:19px}
-.vtag{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;color:#c9b8ff;
+/* brand mark: V~ */
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.015em;justify-content:center}
+.mark{width:40px;height:32px;flex:none}
+.brand .v{font-size:20px}
+.vtag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;letter-spacing:.13em;color:#9fb0ff;
   border:1px solid var(--line);border-radius:6px;padding:3px 7px;background:var(--grad-soft);text-transform:uppercase}
 
 /* center stage */
 main{flex:1;display:grid;place-items:center;padding:40px 22px}
 .stack{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center}
-.eyebrow{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-  color:#b49bff;margin:26px 0 0}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:#8ea3ff;margin:28px 0 0}
 h1{font-size:27px;letter-spacing:-.02em;font-weight:780;margin:9px 0 0;text-align:center}
 .sub{color:var(--muted);font-size:14.5px;margin:8px 0 0;text-align:center;text-wrap:balance}
 
 /* card */
-.card{width:100%;margin-top:26px;background:linear-gradient(180deg,#141227,#0d0b18);
+.card{width:100%;margin-top:26px;background:linear-gradient(180deg,#0b0b15,#060609);
   border:1px solid var(--line);border-radius:18px;padding:24px;position:relative;
-  box-shadow:0 30px 80px -34px rgba(0,0,0,.85)}
+  box-shadow:0 30px 80px -34px rgba(0,0,0,.9)}
 .card::before{content:"";position:absolute;inset:0;border-radius:18px;padding:1px;pointer-events:none;
-  background:linear-gradient(180deg,rgba(157,107,255,.45),transparent 42%);
+  background:linear-gradient(180deg,rgba(47,84,255,.5),transparent 42%);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
 
 .btn{width:100%;border:0;cursor:pointer;font:inherit;font-weight:650;border-radius:12px;padding:14px;
   display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:transform .15s,filter .2s,border-color .2s}
 .btn:active{transform:translateY(1px)}
-.btn-p{background:var(--grad);color:#fff;box-shadow:0 12px 28px -12px rgba(140,80,255,.85),inset 0 1px 0 rgba(255,255,255,.25)}
-.btn-p:hover{filter:brightness(1.08)}
-.btn-g{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
-.btn-g:hover{border-color:rgba(157,107,255,.42)}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 12px 30px -12px rgba(47,84,255,.9),inset 0 1px 0 rgba(255,255,255,.22)}
+.btn-p:hover{filter:brightness(1.1)}
 .btn svg{width:17px;height:17px}
 
 /* divider */
 .or{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--faint);
-  font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.14em}
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.14em}
 .or::before,.or::after{content:"";flex:1;height:1px;background:var(--line2)}
 
 /* fields */
 .field{margin-bottom:12px}
 .field label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px;letter-spacing:.02em}
-.field input{width:100%;background:#0b0917;border:1px solid var(--line);border-radius:11px;
+.field input{width:100%;background:#05050c;border:1px solid var(--line);border-radius:11px;
   padding:12px 13px;color:var(--ink);font:inherit;font-size:14.5px;outline:none;transition:border-color .18s,box-shadow .18s}
-.field input::placeholder{color:#5f5980}
-.field input:focus{border-color:rgba(157,107,255,.6);box-shadow:0 0 0 3px rgba(157,107,255,.14)}
-.row{display:flex;align-items:center;justify-content:space-between;margin:2px 0 16px;font-size:12.5px}
-.row label{display:flex;align-items:center;gap:7px;color:var(--muted);cursor:pointer}
-.row input{accent-color:var(--violet);width:14px;height:14px}
-.row a{color:#b49bff}
-.row a:hover{color:#d3c4ff}
+.field input::placeholder{color:#4f5470}
+.field input:focus{border-color:rgba(47,84,255,.65);box-shadow:0 0 0 3px rgba(47,84,255,.16)}
+.rowx{display:flex;align-items:center;justify-content:space-between;margin:2px 0 16px;font-size:12.5px}
+.rowx label{display:flex;align-items:center;gap:7px;color:var(--muted);cursor:pointer}
+.rowx input{accent-color:var(--blue);width:14px;height:14px}
+.rowx a{color:#8ea3ff}
+.rowx a:hover{color:#b6c4ff}
 
 .req{margin-top:20px;text-align:center;font-size:13.5px;color:var(--muted)}
-.req a{color:#c6b4ff;font-weight:600}
-.req a:hover{color:#ded1ff}
+.req a{color:#9fb0ff;font-weight:600}
+.req a:hover{color:#c6d1ff}
 
-/* status note under card */
 .secure{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;
   font-size:12px;color:var(--faint)}
-.secure i{width:6px;height:6px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 3px rgba(22,201,138,.16)}
+.secure i{width:6px;height:6px;border-radius:50%;background:var(--blue-hi);box-shadow:0 0 0 3px rgba(47,84,255,.18)}
 
-footer{padding:22px;text-align:center;color:#5b556f;font-size:11.5px;line-height:1.6}
+footer{padding:22px;text-align:center;color:#4c5068;font-size:11.5px;line-height:1.6}
 footer .links{margin-bottom:8px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
 footer .links a:hover{color:var(--muted)}
 footer .fine{max-width:60ch;margin:0 auto}
@@ -97,9 +89,17 @@ footer .fine{max-width:60ch;margin:0 auto}
 </style></head>
 <body>
 
+<!-- shared V~ mark -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="vmark" viewBox="0 0 60 48">
+    <path d="M9 6 L26 41 L43 6" fill="none" stroke="#2f54ff" stroke-width="8.6" stroke-linejoin="miter" stroke-linecap="butt"/>
+    <path d="M33 36 c 3.4 -6 7 -6 10.3 0 s 7 6 10.3 0" fill="none" stroke="#2f54ff" stroke-width="6" stroke-linecap="round"/>
+  </symbol>
+</defs></svg>
+
 <main>
   <div class="stack">
-    <div class="brand"><span class="tile"><b>&gt;_</b></span><span class="v">TokenOS</span><span class="vtag">VentureOS</span></div>
+    <div class="brand"><svg class="mark"><use href="#vmark"/></svg><span class="v">VentureOS</span><span class="vtag">TokenOS</span></div>
 
     <div class="eyebrow">Investor Portal</div>
     <h1>Sign in to the venture desk</h1>
@@ -122,7 +122,7 @@ footer .fine{max-width:60ch;margin:0 auto}
           <label for="code">Access code</label>
           <input id="code" type="password" placeholder="••••••••" autocomplete="current-password" required>
         </div>
-        <div class="row">
+        <div class="rowx">
           <label><input type="checkbox">Remember this device</label>
           <a href="#" onclick="notify('A reset link is sent from the live portal.');return false">Need a code?</a>
         </div>
@@ -143,7 +143,7 @@ footer .fine{max-width:60ch;margin:0 auto}
 
 <script>
 function notify(m){ var t=document.getElementById('toast'); if(!t){ t=document.createElement('div'); t.id='toast';
-  t.style.cssText='position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#181527;border:1px solid rgba(157,107,255,.4);color:#e9e3ff;padding:11px 16px;border-radius:11px;font:14px -apple-system,sans-serif;box-shadow:0 18px 40px -18px rgba(0,0,0,.8);z-index:99;opacity:0;transition:opacity .2s,transform .2s';
+  t.style.cssText='position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#0d0f1c;border:1px solid rgba(47,84,255,.45);color:#dfe6ff;padding:11px 16px;border-radius:11px;font:14px -apple-system,sans-serif;box-shadow:0 18px 40px -18px rgba(0,0,0,.85);z-index:99;opacity:0;transition:opacity .2s,transform .2s';
   document.body.appendChild(t);}
   t.textContent=m; requestAnimationFrame(function(){t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});
   clearTimeout(window._tt); window._tt=setTimeout(function(){t.style.opacity='0';},2600);
