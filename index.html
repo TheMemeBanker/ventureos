@@ -235,12 +235,12 @@ footer .fine{max-width:60ch;margin:0 auto}
           <input id="username" type="text" placeholder="yourusername" autocomplete="username" required>
         </div>
         <div class="field">
-          <label for="code">Access code</label>
+          <label for="code">Password</label>
           <input id="code" type="password" placeholder="••••••••" autocomplete="current-password" required>
         </div>
         <div class="rowx">
           <label><input id="remember" type="checkbox">Remember this device</label>
-          <a href="#" onclick="notify('Contact your GP or request access for a code.');return false">Need a code?</a>
+          <a href="#" onclick="notify('Contact your GP to reset your password.');return false">Forgot password?</a>
         </div>
         <div class="signerr" id="signerr" role="alert"></div>
         <button class="btn btn-p" type="submit">Sign in</button>
@@ -320,15 +320,21 @@ function notify(m){ var t=document.getElementById('toast'); if(!t){ t=document.c
   t.textContent=m; requestAnimationFrame(function(){t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});
   clearTimeout(window._tt); window._tt=setTimeout(function(){t.style.opacity='0';},2600);
 }
-/* ---- Shared access-code gate (client-side; code is visible in source — gates a demo, not real security) ---- */
-var ACCESS_CODES = ["ventureos2026"];   // valid access code(s), compared case-insensitively
+/* ---- Username + password gate (client-side; credentials are visible in source — gates a demo, not real security) ---- */
+/* username matched case-insensitively; password is exact */
+var CREDS = [
+  { u:"dfasher", p:"pizza88" },
+  { u:"glen53",  p:"glowpug53" }
+];
 function signin(e){
   e.preventDefault();
   var user = document.getElementById('username').value.trim();
-  var code = document.getElementById('code').value.trim().toLowerCase();
+  var pass = document.getElementById('code').value.trim();
   var err  = document.getElementById('signerr');
-  if(!user || ACCESS_CODES.indexOf(code) === -1){
-    err.textContent = 'Invalid username or access code.';
+  var uNorm = user.toLowerCase();
+  var ok = CREDS.some(function(c){ return c.u === uNorm && c.p === pass; });
+  if(!ok){
+    err.textContent = 'Invalid username or password.';
     err.classList.remove('show'); void err.offsetWidth; err.classList.add('show');
     return;
   }
