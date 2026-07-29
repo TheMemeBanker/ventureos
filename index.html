@@ -48,15 +48,22 @@ a{color:inherit;text-decoration:none}
 .dropdown a .i{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .dropdown a .ext{width:12px;height:12px;opacity:.55;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
-/* Buy $VOS */
-.buy{position:absolute;top:20px;right:22px;z-index:20;display:inline-flex;align-items:center;gap:8px;
-  cursor:pointer;border:0;font:inherit;font-weight:650;font-size:14px;color:#fff;padding:10px 16px;border-radius:11px;
-  background:var(--grad);box-shadow:0 12px 28px -12px rgba(47,84,255,.9),inset 0 1px 0 rgba(255,255,255,.22);
-  transition:transform .15s,filter .2s}
-.buy:hover{filter:brightness(1.1)}
+/* top-right cluster: Buy $VOS + socials (VOS4) */
+.topright{position:absolute;top:20px;right:22px;z-index:20;display:flex;align-items:center;gap:14px}
+.buy{display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:0;font:inherit;font-weight:650;font-size:14px;
+  color:#04140c;padding:10px 15px;border-radius:11px;
+  background:linear-gradient(135deg,#25dd85,#12b869);
+  box-shadow:0 12px 28px -14px rgba(20,200,120,.95),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .15s,filter .2s}
+.buy:hover{filter:brightness(1.06)}
 .buy:active{transform:translateY(1px)}
-.buy svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:520px){ .buy{padding:10px 13px} .buy .lbl{display:none} }
+.buy svg{width:15px;height:15px;stroke:#04140c;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.socials{display:flex;align-items:center;gap:2px}
+.socials a{width:32px;height:32px;display:grid;place-items:center;border-radius:8px;color:var(--muted);
+  transition:color .16s,background .16s}
+.socials a:hover{color:var(--ink);background:rgba(120,140,255,.09)}
+.socials a svg{width:17px;height:17px}
+@media(max-width:680px){ .socials{display:none} }
+@media(max-width:520px){ .buy{padding:10px 12px} .buy .lbl{display:none} }
 
 /* brand mark: V~ */
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.015em;justify-content:center}
@@ -148,10 +155,19 @@ footer .fine{max-width:60ch;margin:0 auto}
   </div>
 </div>
 
-<button class="buy" type="button" onclick="notify('Token purchase opens in the live portal.')">
-  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.5 10h3.2a1.8 1.8 0 0 1 0 3.6H9.3"/></svg>
-  <span class="lbl">Buy $VOS</span>
-</button>
+<div class="topright">
+  <button class="buy" type="button" onclick="notify('Token purchase opens in the live portal.')">
+    <svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg>
+    <span class="lbl">Buy $VOS</span>
+  </button>
+  <div class="socials">
+    <a href="#" aria-label="X" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 10.6 20.9 2h-1.7l-6.3 7.4L7.8 2H2l7.7 11.2L2 22h1.7l6.7-7.9L15.7 22H21.5l-8-11.4zm-2.3 2.7-.8-1.1-6.2-8.9h2.6l5 7.1.8 1.1 6.5 9.3h-2.6l-5.3-7.6z"/></svg></a>
+    <a href="#" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.6A19.7 19.7 0 0 0 15.5 3l-.3.5a18.2 18.2 0 0 1 4.3 1.4A16.4 16.4 0 0 0 4.4 5 18.2 18.2 0 0 1 8.8 3.5L8.5 3a19.7 19.7 0 0 0-4.8 1.6C.9 8.8-.1 13 .4 17a19.9 19.9 0 0 0 5.9 3l.8-1.3a13 13 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12 0l.5.4a13 13 0 0 1-2 1l.8 1.3a19.9 19.9 0 0 0 5.9-3c.6-4.7-.9-8.9-2.5-12.4zM8.3 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg></a>
+    <a href="#" aria-label="Telegram" title="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l5 2 2 6 3-4 5 4z"/><path d="m8 13 8-6"/></svg></a>
+    <a href="#" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.8 12 4.8 12 4.8s-7 0-8.9.6A3 3 0 0 0 1 7.5 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1c1.9.6 8.9.6 8.9.6s7 0 8.9-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.5zM9.8 15.3V8.7l5.7 3.3z"/></svg></a>
+    <a href="#" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a>
+  </div>
+</div>
 
 <main>
   <div class="stack">
