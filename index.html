@@ -48,6 +48,16 @@ a{color:inherit;text-decoration:none}
 .dropdown a .i{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .dropdown a .ext{width:12px;height:12px;opacity:.55;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
+/* Buy $VOS */
+.buy{position:absolute;top:20px;right:22px;z-index:20;display:inline-flex;align-items:center;gap:8px;
+  cursor:pointer;border:0;font:inherit;font-weight:650;font-size:14px;color:#fff;padding:10px 16px;border-radius:11px;
+  background:var(--grad);box-shadow:0 12px 28px -12px rgba(47,84,255,.9),inset 0 1px 0 rgba(255,255,255,.22);
+  transition:transform .15s,filter .2s}
+.buy:hover{filter:brightness(1.1)}
+.buy:active{transform:translateY(1px)}
+.buy svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:520px){ .buy{padding:10px 13px} .buy .lbl{display:none} }
+
 /* brand mark: V~ */
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.015em;justify-content:center}
 .mark{width:48px;height:32px;flex:none}
@@ -137,6 +147,11 @@ footer .fine{max-width:60ch;margin:0 auto}
     <a role="menuitem" href="https://tokenos.ai/investors"><svg class="i" viewBox="0 0 24 24"><path d="M6 20v-5M12 20V9M18 20V4"/></svg>Investors</a>
   </div>
 </div>
+
+<button class="buy" type="button" onclick="notify('Token purchase opens in the live portal.')">
+  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.5 10h3.2a1.8 1.8 0 0 1 0 3.6H9.3"/></svg>
+  <span class="lbl">Buy $VOS</span>
+</button>
 
 <main>
   <div class="stack">
