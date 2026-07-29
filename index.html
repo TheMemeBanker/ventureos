@@ -28,6 +28,14 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
+/* back to main site */
+.back{position:absolute;top:20px;left:22px;z-index:5;display:inline-flex;align-items:center;gap:7px;
+  color:var(--muted);font-size:13px;font-weight:500;padding:8px 13px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(120,140,255,.04);transition:color .18s,border-color .18s,background .18s}
+.back:hover{color:var(--ink);border-color:rgba(47,84,255,.5);background:rgba(47,84,255,.08)}
+.back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:520px){ .back span{display:none} .back{padding:9px} }
+
 /* brand mark: V~ */
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.015em;justify-content:center}
 .mark{width:48px;height:32px;flex:none}
@@ -101,6 +109,8 @@ footer .fine{max-width:60ch;margin:0 auto}
   </symbol>
 </defs></svg>
 
+<a class="back" href="https://tokenos.ai/"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><span>Back to TokenOS</span></a>
+
 <main>
   <div class="stack">
     <div class="brand"><svg class="mark"><use href="#vmark"/></svg><span class="v">VentureOS</span></div>
@@ -141,7 +151,7 @@ footer .fine{max-width:60ch;margin:0 auto}
 </main>
 
 <footer>
-  <div class="links"><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Disclosures</a><a href="#">Contact</a></div>
+  <div class="links"><a href="https://tokenos.ai/" rel="noopener">TokenOS ↗</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Disclosures</a><a href="#">Contact</a></div>
   <p class="fine">VentureOS is an illustrative preview of the TokenOS investor portal. Not an offer to sell or a solicitation to buy any security, token, or investment product, and not investment advice. Access is subject to eligibility, verification, and applicable law.</p>
 </footer>
 
