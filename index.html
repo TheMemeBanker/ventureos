@@ -1,0 +1,403 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VentureOS — Investor Portal</title>
+<style>
+:root{
+  --bg:#07060d; --bg2:#0c0a17; --panel:#100e1c; --panel2:#15132449;
+  --ink:#f5f3fc; --muted:#9a93b4; --faint:#6d6789;
+  --line:rgba(147,130,210,.13); --line2:rgba(147,130,210,.09);
+  --violet:#9d6bff; --violet-d:#6d3ff5; --indigo:#5b4be8;
+  --emerald:#16c98a; --emerald-d:#0e9d6b;
+  --grad:linear-gradient(135deg,#a877ff 0%,#6d3ff5 100%);
+  --grad-soft:linear-gradient(135deg,rgba(157,107,255,.18),rgba(109,63,245,.06));
+  --shadow:0 30px 80px -30px rgba(0,0,0,.85);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:
+    radial-gradient(1100px 620px at 50% -160px,rgba(120,72,230,.28),transparent 62%),
+    radial-gradient(900px 520px at 88% 8%,rgba(88,60,220,.12),transparent 60%),
+    linear-gradient(180deg,var(--bg) 0%,var(--bg) 34%,var(--bg2) 100%);
+  color:var(--ink);
+  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; min-height:100vh;
+}
+.mono{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);
+  background:linear-gradient(180deg,rgba(7,6,13,.86),rgba(7,6,13,.52));
+  border-bottom:1px solid var(--line2)}
+.nav{display:flex;align-items:center;gap:14px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em}
+.tile{width:34px;height:34px;border-radius:9px;background:var(--grad);display:grid;place-items:center;
+  box-shadow:0 6px 20px -6px rgba(140,80,255,.7),inset 0 1px 0 rgba(255,255,255,.35)}
+.tile b{font-family:ui-monospace,monospace;font-size:16px;color:#fff;transform:translateY(-1px)}
+.brand .v{font-size:17px}
+.vtag{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;color:#c9b8ff;
+  border:1px solid var(--line);border-radius:6px;padding:3px 7px;background:var(--grad-soft);text-transform:uppercase}
+.nav .sp{flex:1}
+.status{display:none;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:var(--panel2)}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 3px rgba(22,201,138,.16);animation:pulse 2.6s infinite}
+@keyframes pulse{50%{opacity:.55}}
+.btn{border:0;cursor:pointer;font:inherit;font-weight:650;border-radius:11px;padding:10px 17px;
+  display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,box-shadow .2s,filter .2s}
+.btn:active{transform:translateY(1px)}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 10px 26px -10px rgba(140,80,255,.8),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-p:hover{filter:brightness(1.08)}
+.btn-g{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.btn-g:hover{border-color:rgba(157,107,255,.4)}
+
+/* ---------- HERO ---------- */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;padding:70px 0 40px;align-items:start}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:ui-monospace,monospace;font-size:12px;
+  letter-spacing:.13em;text-transform:uppercase;color:#c6b4ff;
+  border:1px solid var(--line);border-radius:999px;padding:6px 13px;background:var(--grad-soft)}
+h1{font-size:57px;line-height:1.02;letter-spacing:-.03em;font-weight:820;margin:22px 0 0;text-wrap:balance}
+h1 .g{background:linear-gradient(180deg,#fff,#c9b6ff 88%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--muted);font-size:18px;max-width:44ch;margin:20px 0 0}
+.trust{display:flex;flex-wrap:wrap;gap:8px 20px;margin:26px 0 0;color:var(--faint);font-size:13px}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust svg{width:14px;height:14px;stroke:var(--emerald);fill:none;stroke-width:2.4}
+
+/* ---------- ACCESS CONSOLE ---------- */
+.console{background:linear-gradient(180deg,#141227,#0d0b18);border:1px solid var(--line);
+  border-radius:18px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.console::before{content:"";position:absolute;inset:0;border-radius:18px;padding:1px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(157,107,255,.5),transparent 45%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.cbar{display:flex;align-items:center;gap:8px;padding:12px 15px;border-bottom:1px solid var(--line2);
+  background:rgba(255,255,255,.02)}
+.dot{width:11px;height:11px;border-radius:50%}
+.cbar .t{margin-left:8px;font-family:ui-monospace,monospace;font-size:12px;color:var(--faint)}
+.cbody{padding:20px 20px 22px}
+.term{font-family:ui-monospace,monospace;font-size:13px;line-height:1.85;color:#b9b1d6;min-height:118px}
+.term .p{color:var(--violet)}
+.term .ok{color:var(--emerald)}
+.term .dim{color:var(--faint)}
+.cursor{display:inline-block;width:8px;height:15px;background:var(--violet);vertical-align:-2px;margin-left:2px;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cta-row{display:flex;gap:11px;margin-top:18px}
+.cta-row .btn{flex:1;justify-content:center;padding:13px}
+.finehint{margin:14px 2px 0;font-size:12px;color:var(--faint);text-align:center}
+/* connected state */
+.acct{display:none;margin-top:16px;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.acct.show{display:block;animation:rise .5s ease both}
+.acct .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:var(--grad-soft)}
+.acct .who{font-family:ui-monospace,monospace;font-size:13px;color:#d9ccff}
+.tier{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--emerald);border:1px solid rgba(22,201,138,.35);border-radius:7px;padding:4px 9px;background:rgba(22,201,138,.08)}
+.acct .grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2)}
+.acct .grid div{background:#0f0d1b;padding:12px 15px}
+.acct .grid .k{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+.acct .grid .val{font-size:17px;font-weight:750;margin-top:2px}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- METRICS STRIP ---------- */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line2);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:14px 0 4px}
+.metrics .m{background:linear-gradient(180deg,#100e1d,#0c0a16);padding:22px 22px}
+.metrics .big{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.metrics .big em{font-style:normal;background:linear-gradient(120deg,#c3adff,#8a63ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metrics .lab{color:var(--muted);font-size:13px;margin-top:5px}
+.metrics .sub{color:var(--faint);font-size:11.5px;margin-top:2px;font-family:ui-monospace,monospace}
+
+/* ---------- SECTIONS ---------- */
+section.blk{padding:64px 0 8px}
+.head{max-width:60ch}
+.kick{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#b49bff}
+.head h2{font-size:33px;letter-spacing:-.022em;font-weight:800;margin:12px 0 0;text-wrap:balance}
+.head p{color:var(--muted);font-size:16.5px;margin:12px 0 0}
+
+/* feature cards */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.card{background:linear-gradient(180deg,var(--panel),#0d0b18);border:1px solid var(--line);
+  border-radius:15px;padding:22px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:rgba(157,107,255,.34)}
+.ic{width:42px;height:42px;border-radius:11px;background:var(--grad-soft);border:1px solid var(--line);
+  display:grid;place-items:center;margin-bottom:15px}
+.ic svg{width:21px;height:21px;stroke:var(--violet);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:17.5px;margin:0 0 6px;font-weight:720}
+.card p{color:var(--muted);font-size:14px;margin:0;line-height:1.55}
+
+/* tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.tier-c{background:linear-gradient(180deg,var(--panel),#0c0a17);border:1px solid var(--line);border-radius:16px;
+  padding:24px;display:flex;flex-direction:column;position:relative}
+.tier-c.feat-on{border-color:rgba(157,107,255,.5);box-shadow:0 0 0 1px rgba(157,107,255,.25),0 24px 60px -34px rgba(140,80,255,.7)}
+.tier-c .badge{position:absolute;top:-11px;left:24px;font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--grad);color:#fff;border-radius:7px;padding:4px 10px}
+.tier-c .name{font-size:19px;font-weight:780}
+.tier-c .req{font-family:ui-monospace,monospace;font-size:13px;color:#c6b4ff;margin-top:6px}
+.tier-c .req b{color:var(--ink)}
+.tier-c ul{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:11px}
+.tier-c li{display:flex;gap:10px;font-size:14px;color:var(--muted);line-height:1.5}
+.tier-c li svg{width:16px;height:16px;flex:none;margin-top:3px;stroke:var(--emerald);fill:none;stroke-width:2.6}
+.tier-c li.off{color:var(--faint)}
+.tier-c li.off svg{stroke:var(--faint)}
+
+/* portfolio preview */
+.pf{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px;position:relative}
+.co{background:linear-gradient(180deg,var(--panel),#0d0b18);border:1px solid var(--line);border-radius:14px;padding:18px}
+.co .row1{display:flex;align-items:center;gap:11px}
+.co .logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-family:ui-monospace,monospace;
+  font-weight:700;font-size:14px;color:#fff;border:1px solid rgba(255,255,255,.14)}
+.co .nm{font-weight:700;font-size:15px}
+.co .cat{font-size:11.5px;color:var(--faint);font-family:ui-monospace,monospace}
+.co .meta{display:flex;justify-content:space-between;margin-top:16px;padding-top:13px;border-top:1px solid var(--line2)}
+.co .meta .k{font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
+.co .meta .val{font-size:14px;font-weight:700;margin-top:2px}
+.co.locked{position:relative;overflow:hidden}
+.co.locked .inner{filter:blur(7px);opacity:.5;pointer-events:none;user-select:none}
+.co.locked .lockov{position:absolute;inset:0;display:grid;place-items:center;gap:0;
+  background:radial-gradient(circle at 50% 40%,rgba(15,13,25,.35),rgba(12,10,22,.78))}
+.co.locked .lockov .l{display:flex;flex-direction:column;align-items:center;gap:7px;color:#c9bcf0;font-size:12px}
+.co.locked .lockov svg{width:20px;height:20px;stroke:#c9bcf0;fill:none;stroke-width:2}
+.unlocked .co.locked .inner{filter:none;opacity:1;pointer-events:auto;user-select:auto}
+.unlocked .co.locked .lockov{display:none}
+
+/* CTA band */
+.band{margin:70px 0 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  background:radial-gradient(700px 300px at 15% -40%,rgba(140,80,255,.28),transparent 60%),linear-gradient(180deg,#141126,#0d0b18)}
+.band .in{padding:46px 40px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap}
+.band h2{font-size:30px;letter-spacing:-.02em;margin:0;font-weight:800;text-wrap:balance}
+.band p{color:var(--muted);margin:10px 0 0;max-width:46ch}
+
+/* footer */
+footer{margin-top:64px;border-top:1px solid var(--line2);padding:34px 0 60px;color:var(--faint);font-size:13px}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.disclaim{max-width:70ch;margin:20px 0 0;font-size:11.5px;line-height:1.6;color:#5b556f}
+.foot a:hover{color:var(--muted)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:34px;padding:44px 0 20px}
+  h1{font-size:42px}
+  .metrics{grid-template-columns:1fr 1fr}
+  .feat,.tiers{grid-template-columns:1fr}
+  .pf{grid-template-columns:1fr 1fr}
+  .band .in{padding:32px 24px}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px}
+  h1{font-size:35px}
+  .cta-row{flex-direction:column}
+  .pf{grid-template-columns:1fr}
+  .vtag{display:none}
+}
+@media(min-width:1000px){.status{display:inline-flex}}
+</style></head>
+<body>
+
+<nav><div class="wrap nav">
+  <div class="brand"><span class="tile"><b>&gt;_</b></span><span class="v">TokenOS</span><span class="vtag">VentureOS</span></div>
+  <span class="sp"></span>
+  <span class="status"><i></i>Fund open · Q3 allocation live</span>
+  <button class="btn btn-p" onclick="connect()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M16 12h.01M3 10h18"/></svg>Connect Wallet</button>
+</div></nav>
+
+<div class="wrap">
+
+  <!-- HERO / ACCESS GATE -->
+  <section class="hero">
+    <div>
+      <span class="eyebrow">VentureOS · Investor Portal</span>
+      <h1>The venture desk,<br><span class="g">behind one wallet.</span></h1>
+      <p class="lede">VentureOS is the community venture fund for the TokenOS ecosystem. Connect to verify your <b>$TOS</b> position and unlock deal flow, allocations, the data room, and live LP reporting. Access is invite-only.</p>
+      <div class="trust">
+        <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Non-custodial — you sign, we never hold keys</span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>On-chain allocations &amp; distributions</span>
+      </div>
+    </div>
+
+    <!-- console -->
+    <div class="console" id="console">
+      <div class="cbar">
+        <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span>
+        <span class="t">ventureos://investor-access</span>
+      </div>
+      <div class="cbody">
+        <div class="term" id="term">
+          <div><span class="p">ventureos</span> <span class="dim">$</span> access --request<span class="cursor" id="cur"></span></div>
+        </div>
+
+        <div class="cta-row" id="ctaRow">
+          <button class="btn btn-p" onclick="connect()">Connect Wallet</button>
+          <button class="btn btn-g" onclick="invite()">Request an invite</button>
+        </div>
+        <div class="finehint" id="hint">Supports Phantom, Backpack &amp; Solflare · read-only signature</div>
+
+        <!-- connected -->
+        <div class="acct" id="acct">
+          <div class="top"><span class="who" id="who">7xQ…9fToS</span><span class="tier">Limited Partner</span></div>
+          <div class="grid">
+            <div><div class="k">Staked $TOS</div><div class="val">41,250</div></div>
+            <div><div class="k">Access tier</div><div class="val">LP · full desk</div></div>
+            <div><div class="k">Your commitment</div><div class="val">$25,000</div></div>
+            <div><div class="k">Current NAV</div><div class="val">$63,900 · 2.56×</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="m"><div class="big">$<em>48.2M</em></div><div class="lab">Committed capital</div><div class="sub">312 LPs</div></div>
+    <div class="m"><div class="big">$<em>31.6M</em></div><div class="lab">Deployed</div><div class="sub">across 27 rounds</div></div>
+    <div class="m"><div class="big"><em>27</em></div><div class="lab">Portfolio companies</div><div class="sub">4 at seed, 2 exited</div></div>
+    <div class="m"><div class="big"><em>2.9×</em></div><div class="lab">Net MOIC</div><div class="sub">realized + marked</div></div>
+  </div>
+
+  <!-- WHAT YOU UNLOCK -->
+  <section class="blk">
+    <div class="head">
+      <div class="kick">Inside the portal</div>
+      <h2>Everything an LP needs, in one console.</h2>
+      <p>VentureOS runs the full fund lifecycle on-chain — sourcing, diligence, committing, and reporting — so your position is always verifiable, never a PDF in your inbox.</p>
+    </div>
+    <div class="feat">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/><circle cx="19" cy="19" r="2.5"/></svg></div>
+        <h3>Deal flow</h3><p>Vetted TokenOS-native rounds with sponsor memos, terms, and the diligence trail before allocation opens.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 4v16"/></svg></div>
+        <h3>Data room</h3><p>Cap tables, token schedules, legal, and founder updates — permissioned to your tier, watermarked to your wallet.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></div>
+        <h3>Allocations</h3><p>Commit and track pro-rata directly from the console. Escrow, vesting, and pull-forward all settle on-chain.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg></div>
+        <h3>LP reporting</h3><p>Live NAV, MOIC, and IRR per position. Distributions stream to your wallet the moment an exit clears.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></div>
+        <h3>Governance</h3><p>Investment-committee votes run on-chain. Higher tiers sponsor deals and shape which rounds the fund backs.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <h3>Syndicate</h3><p>Co-invest alongside the fund, share intros, and access founder office hours with the rest of the LP base.</p></div>
+    </div>
+  </section>
+
+  <!-- ACCESS TIERS -->
+  <section class="blk">
+    <div class="head">
+      <div class="kick">Access tiers</div>
+      <h2>Your $TOS position sets your seat.</h2>
+      <p>Stake $TOS to move up. Every tier is enforced on-chain — no forms, no gatekeepers, unlock the moment your balance clears.</p>
+    </div>
+    <div class="tiers">
+      <div class="tier-c">
+        <div class="name">Observer</div>
+        <div class="req"><b>0</b> $TOS</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Portfolio index &amp; public memos</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Fund-level metrics &amp; NAV</li>
+          <li class="off"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>No allocations or data room</li>
+          <li class="off"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>No governance</li>
+        </ul>
+      </div>
+      <div class="tier-c feat-on">
+        <span class="badge">Most LPs</span>
+        <div class="name">Limited Partner</div>
+        <div class="req">Stake <b>25,000</b> $TOS</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Full deal flow &amp; data room</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Commit allocations pro-rata</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Live LP reporting &amp; distributions</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Quarterly LP calls</li>
+        </ul>
+      </div>
+      <div class="tier-c">
+        <div class="name">General Partner</div>
+        <div class="req">Stake <b>250,000</b> $TOS</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Everything in LP</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Sponsor &amp; lead deals</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Investment-committee vote</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Carry share on sponsored rounds</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO PREVIEW -->
+  <section class="blk">
+    <div class="head">
+      <div class="kick">Portfolio · preview</div>
+      <h2>A look at what the fund backs.</h2>
+      <p>Public tiles are visible to everyone. Full metrics, memos, and rounds unlock when you connect — <span style="color:#c6b4ff">connect above to reveal the locked positions.</span></p>
+    </div>
+    <div class="pf" id="pf">
+      <div class="co"><div class="inner"><div class="row1"><span class="logo" style="background:linear-gradient(135deg,#6d3ff5,#a877ff)">NX</span><div><div class="nm">Nexus</div><div class="cat">infra · rpc</div></div></div>
+        <div class="meta"><div><div class="k">Stage</div><div class="val">Series A</div></div><div><div class="k">Mark</div><div class="val" style="color:var(--emerald)">4.1×</div></div></div></div></div>
+      <div class="co"><div class="inner"><div class="row1"><span class="logo" style="background:linear-gradient(135deg,#16c98a,#0e9d6b)">HX</span><div><div class="nm">Helix</div><div class="cat">defi · perps</div></div></div>
+        <div class="meta"><div><div class="k">Stage</div><div class="val">Seed</div></div><div><div class="k">Mark</div><div class="val" style="color:var(--emerald)">2.7×</div></div></div></div></div>
+      <div class="co locked"><div class="inner"><div class="row1"><span class="logo" style="background:linear-gradient(135deg,#5b4be8,#9d6bff)">OR</span><div><div class="nm">Orbit</div><div class="cat">ai · agents</div></div></div>
+        <div class="meta"><div><div class="k">Stage</div><div class="val">Series B</div></div><div><div class="k">Mark</div><div class="val" style="color:var(--emerald)">6.3×</div></div></div></div>
+        <div class="lockov"><div class="l"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>LP access</div></div></div>
+      <div class="co locked"><div class="inner"><div class="row1"><span class="logo" style="background:linear-gradient(135deg,#a877ff,#6d3ff5)">VC</span><div><div class="nm">VaultCore</div><div class="cat">infra · custody</div></div></div>
+        <div class="meta"><div><div class="k">Stage</div><div class="val">Series A</div></div><div><div class="k">Mark</div><div class="val" style="color:var(--emerald)">3.4×</div></div></div></div>
+        <div class="lockov"><div class="l"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>LP access</div></div></div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="band"><div class="in">
+    <div>
+      <h2>Ready to take a seat at the desk?</h2>
+      <p>Connect your wallet to verify eligibility, or request an invite and the GP team will review your application.</p>
+    </div>
+    <div style="display:flex;gap:11px;flex-wrap:wrap">
+      <button class="btn btn-p" onclick="connect()">Connect Wallet</button>
+      <button class="btn btn-g" onclick="invite()">Request an invite</button>
+    </div>
+  </div></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot">
+      <div class="brand"><span class="tile"><b>&gt;_</b></span><span class="v">TokenOS</span><span class="vtag">VentureOS</span></div>
+      <div style="display:flex;gap:22px"><a href="#">Documentation</a><a href="#">Terms</a><a href="#">Disclosures</a><a href="#">Contact</a></div>
+    </div>
+    <p class="disclaim">VentureOS is an illustrative preview of the TokenOS investor portal. Figures shown are sample data for demonstration only and do not represent actual fund performance, holdings, or an offer. Nothing here is an offer to sell or a solicitation to buy any security, token, or investment product, and it is not investment advice. Access and participation are subject to eligibility, verification, and applicable law.</p>
+  </footer>
+</div>
+
+<script>
+var typed=false;
+function typeSeq(){
+  if(typed) return; typed=true;
+  var term=document.getElementById('term');
+  var cur=document.getElementById('cur');
+  var lines=[
+    {t:'scanning wallet for $TOS…',c:'dim',d:520},
+    {t:'✓ position verified · 41,250 $TOS staked',c:'ok',d:640},
+    {t:'✓ tier resolved · Limited Partner',c:'ok',d:520},
+    {t:'unlocking deal flow · data room · reporting…',c:'dim',d:560},
+    {t:'✓ access granted — welcome back, LP.',c:'ok',d:420}
+  ];
+  var i=0;
+  (function next(){
+    if(i>=lines.length){
+      if(cur) cur.style.display='none';
+      document.getElementById('ctaRow').style.display='none';
+      document.getElementById('hint').style.display='none';
+      document.getElementById('acct').classList.add('show');
+      document.getElementById('pf').parentElement.classList.add('unlocked');
+      return;
+    }
+    var l=lines[i++];
+    var d=document.createElement('div');
+    d.innerHTML='<span class="'+l.c+'">'+l.t+'</span>';
+    term.insertBefore(d,cur.parentElement);
+    setTimeout(next,l.d);
+  })();
+}
+function connect(){ document.getElementById('console').scrollIntoView({behavior:'smooth',block:'center'}); typeSeq(); }
+function invite(){
+  var t=document.getElementById('term');
+  if(document.getElementById('inv')) return;
+  var d=document.createElement('div'); d.id='inv';
+  d.innerHTML='<span class="dim">invite queued — the GP team reviews applications weekly.</span>';
+  t.insertBefore(d,document.getElementById('cur').parentElement);
+}
+</script>
+</body></html>
