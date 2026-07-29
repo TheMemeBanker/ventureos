@@ -122,6 +122,9 @@ h1{font-size:clamp(27px,4.4vw,47px);letter-spacing:-.025em;font-weight:800;margi
 .rowx a{color:#8ea3ff}
 .rowx a:hover{color:#b6c4ff}
 
+.signerr{display:none;margin:0 0 12px;padding:10px 13px;border-radius:10px;font-size:13px;
+  color:#ffb4b4;background:rgba(255,80,80,.08);border:1px solid rgba(255,90,90,.28)}
+.signerr.show{display:block;animation:pop .22s ease both}
 .req{margin-top:22px;text-align:center;font-size:14.5px;color:var(--muted)}
 .req a{color:#9fb0ff;font-weight:600}
 .req a:hover{color:#c6d1ff}
@@ -236,9 +239,10 @@ footer .fine{max-width:60ch;margin:0 auto}
           <input id="code" type="password" placeholder="••••••••" autocomplete="current-password" required>
         </div>
         <div class="rowx">
-          <label><input type="checkbox">Remember this device</label>
-          <a href="#" onclick="notify('A reset link is sent from the live portal.');return false">Need a code?</a>
+          <label><input id="remember" type="checkbox">Remember this device</label>
+          <a href="#" onclick="notify('Contact your GP or request access for a code.');return false">Need a code?</a>
         </div>
+        <div class="signerr" id="signerr" role="alert"></div>
         <button class="btn btn-p" type="submit">Sign in</button>
       </form>
 
@@ -316,6 +320,22 @@ function notify(m){ var t=document.getElementById('toast'); if(!t){ t=document.c
   t.textContent=m; requestAnimationFrame(function(){t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});
   clearTimeout(window._tt); window._tt=setTimeout(function(){t.style.opacity='0';},2600);
 }
-function signin(e){ e.preventDefault(); notify('This is an illustrative preview — sign-in is enabled in the live portal.'); }
+/* ---- Shared access-code gate (client-side; code is visible in source — gates a demo, not real security) ---- */
+var ACCESS_CODES = ["ventureos2026"];   // valid access code(s), compared case-insensitively
+function signin(e){
+  e.preventDefault();
+  var user = document.getElementById('username').value.trim();
+  var code = document.getElementById('code').value.trim().toLowerCase();
+  var err  = document.getElementById('signerr');
+  if(!user || ACCESS_CODES.indexOf(code) === -1){
+    err.textContent = 'Invalid username or access code.';
+    err.classList.remove('show'); void err.offsetWidth; err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  var store = document.getElementById('remember').checked ? localStorage : sessionStorage;
+  try{ store.setItem('vos_auth','1'); store.setItem('vos_user', user); }catch(_){}
+  location.href = 'dashboard.html';
+}
 </script>
 </body></html>
