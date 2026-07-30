@@ -14,7 +14,7 @@
 </script>
 <style>
 :root{
-  --bg:#04040a; --bg2:#07070f; --panel:#0b0c17; --panel2:#0e0f1c; --raise:#12142239;
+  --bg:#04040a; --bg2:#07070f; --panel:#0b0c17; --panel2:#0e0f1c;
   --ink:#f6f5fd; --ink2:#c9cbe0; --muted:#8b90ab; --faint:#585d78;
   --line:rgba(126,142,255,.13); --line2:rgba(126,142,255,.07);
   --blue:#2f54ff; --blue-hi:#5d78ff; --blue-lo:#1e3cf0; --lilac:#c3acff;
@@ -32,7 +32,6 @@ a{color:inherit;text-decoration:none}
 .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
 
-/* ---- top bar ---- */
 .bar{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);
   background:linear-gradient(180deg,rgba(4,4,10,.92),rgba(4,4,10,.6));border-bottom:1px solid var(--line2)}
 .barin{display:flex;align-items:center;gap:14px;height:62px;padding:0 20px}
@@ -57,7 +56,6 @@ a{color:inherit;text-decoration:none}
 .acct .nm{font-size:13px;font-weight:600;line-height:1.2}
 .acct .rl{font-size:11px;color:var(--faint)}
 
-/* ---- shell ---- */
 .shell{display:grid;grid-template-columns:236px 1fr;min-height:calc(100vh - 62px)}
 .side{border-right:1px solid var(--line2);padding:18px 14px;display:flex;flex-direction:column;gap:3px;position:sticky;top:62px;align-self:start;height:calc(100vh - 62px);overflow-y:auto}
 .navgroup{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:16px 12px 6px}
@@ -68,15 +66,13 @@ a{color:inherit;text-decoration:none}
 .nav.on{color:#fff;background:var(--grad-soft);border-color:rgba(47,84,255,.3)}
 .nav.on svg{stroke:var(--blue-hi)}
 .nav .badge{margin-left:auto;font-size:10.5px;font-weight:700;background:var(--blue);color:#fff;border-radius:20px;padding:1px 7px;font-variant-numeric:tabular-nums}
-.nav .dotmark{margin-left:auto;width:7px;height:7px;border-radius:50%;background:var(--emerald)}
 .side .grow{flex:1}
 .sidecard{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel),#07080f)}
 .sidecard .t{font-size:12px;color:var(--muted);line-height:1.5}
 .sidecard b{color:var(--ink)}
 .sidecard .pfill{height:6px;border-radius:20px;background:#0a0b15;overflow:hidden;margin:10px 0 6px}
-.sidecard .pfill i{display:block;height:100%;width:100%;background:var(--grad)}
+.sidecard .pfill i{display:block;height:100%;background:var(--grad)}
 
-/* ---- content ---- */
 main{padding:24px 26px 60px;max-width:1180px;overflow-x:hidden}
 .tab{display:none}
 .tab.on{display:block;animation:fade .28s ease both}
@@ -90,15 +86,12 @@ main{padding:24px 26px 60px;max-width:1180px;overflow-x:hidden}
 .card{background:linear-gradient(180deg,var(--panel2),#07080f);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
 .ch{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
 .ch h3{font-size:14.5px;font-weight:700;margin:0;letter-spacing:-.01em}
-.ch .subttl{font-size:12px;color:var(--faint)}
 .link{font-size:12.5px;color:#8ea3ff;cursor:pointer;font-weight:600}.link:hover{color:#b6c4ff}
 
-/* hero grid */
 .hero{display:grid;grid-template-columns:1.55fr 1fr;gap:16px}
 .navbig .k{color:var(--muted);font-size:12.5px;font-weight:600;letter-spacing:.02em}
 .navbig .big{font-size:38px;font-weight:820;letter-spacing:-.03em;margin:5px 0 3px}
 .delta{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:650;color:var(--emerald)}
-.delta.dn{color:var(--red)}
 .delta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 .delta .mut{color:var(--faint);font-weight:500}
 .ranges{display:flex;gap:4px}
@@ -106,14 +99,12 @@ main{padding:24px 26px 60px;max-width:1180px;overflow-x:hidden}
 .range:hover{color:var(--ink)}
 .range.on{color:#fff;background:var(--grad-soft);border-color:rgba(47,84,255,.3)}
 
-/* chart */
 .chartwrap{position:relative;margin-top:16px}
 .chartwrap svg.chart{width:100%;height:210px;display:block;overflow:visible}
 .tip{position:absolute;pointer-events:none;transform:translate(-50%,-115%);background:#12142a;border:1px solid rgba(47,84,255,.5);border-radius:9px;padding:7px 11px;font-size:12.5px;opacity:0;transition:opacity .12s;white-space:nowrap;box-shadow:0 12px 30px -14px #000;z-index:5}
 .tip .v{font-weight:750;font-variant-numeric:tabular-nums}
 .tip .d{color:var(--faint);font-size:11px;margin-top:1px}
 
-/* capital account list */
 .kvlist{display:flex;flex-direction:column;gap:2px}
 .kvrow{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line2)}
 .kvrow:last-child{border-bottom:0}
@@ -121,29 +112,24 @@ main{padding:24px 26px 60px;max-width:1180px;overflow-x:hidden}
 .kvrow .v{font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
 .kvrow .v.up{color:var(--emerald)}
 
-/* metric tiles */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
-.metric{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 17px;position:relative;overflow:hidden}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
 .metric .k{color:var(--faint);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
 .metric .n{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-top:6px;font-variant-numeric:tabular-nums}
 .metric .t{font-size:11.5px;margin-top:4px;color:var(--emerald);font-weight:600;display:inline-flex;align-items:center;gap:4px}
 .metric .t.dn{color:var(--red)}
 .metric .hint{font-size:11px;color:var(--faint);margin-top:4px}
 
-/* two col */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
 
-/* donut */
 .alloc{display:flex;align-items:center;gap:24px}
-.donut{--a:34;--b:58;--c:80;width:140px;height:140px;border-radius:50%;flex:none;position:relative;
-  background:conic-gradient(#5d78ff 0 calc(var(--a)*1%),#1fd18a calc(var(--a)*1%) calc(var(--b)*1%),#c3acff calc(var(--b)*1%) calc(var(--c)*1%),#f5b34a calc(var(--c)*1%) 100%);
+.donut{width:140px;height:140px;border-radius:50%;flex:none;
   -webkit-mask:radial-gradient(circle 43px at center,transparent 98%,#000 100%);mask:radial-gradient(circle 43px at center,transparent 98%,#000 100%)}
 .leg{flex:1;display:flex;flex-direction:column;gap:11px;font-size:13.5px}
-.leg .li{display:flex;align-items:center;gap:9px;color:var(--ink2);cursor:default}
+.leg .li{display:flex;align-items:center;gap:9px;color:var(--ink2)}
 .leg .dot{width:11px;height:11px;border-radius:3px;flex:none}
 .leg b{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--ink)}
 
-/* activity */
 .act{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line2)}
 .act:last-child{border-bottom:0}
 .act .ai{width:34px;height:34px;border-radius:9px;background:var(--grad-soft);border:1px solid var(--line);display:grid;place-items:center;flex:none}
@@ -151,7 +137,6 @@ main{padding:24px 26px 60px;max-width:1180px;overflow-x:hidden}
 .act .am{flex:1;min-width:0}.act .am .t{font-size:13.5px}.act .am .d{font-size:11.5px;color:var(--faint);font-family:ui-monospace,monospace;margin-top:1px}
 .act .amt{font-weight:700;font-size:13.5px;font-variant-numeric:tabular-nums}.act .amt.up{color:var(--emerald)}
 
-/* tables */
 .tablewrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;min-width:520px}
 th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);font-weight:600;padding:0 12px 12px}
@@ -166,7 +151,6 @@ td .co .nm{font-weight:650;font-variant-numeric:normal}
 .wbar{width:78px;height:6px;border-radius:20px;background:#0a0b15;overflow:hidden;display:inline-block;vertical-align:middle}
 .wbar i{display:block;height:100%;background:var(--grad)}
 
-/* deal cards */
 .deal{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--panel);margin-bottom:12px}
 .deal .top{display:flex;align-items:center;gap:12px}
 .deal .meta{font-size:12px;color:var(--faint);font-family:ui-monospace,monospace;margin-top:2px}
@@ -185,14 +169,12 @@ td .co .nm{font-weight:650;font-variant-numeric:normal}
 .buyvos{margin-top:14px;background:linear-gradient(135deg,#25dd85,#12b869);color:#04140c;box-shadow:0 12px 30px -10px rgba(20,200,120,.95),inset 0 1px 0 rgba(255,255,255,.35)}
 .buyvos:hover{filter:brightness(1.06)}
 
-/* docs */
 .docrow{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--line2)}
 .docrow:first-child{border-top:0}
 .docic{width:36px;height:36px;border-radius:9px;background:var(--grad-soft);border:1px solid var(--line);display:grid;place-items:center;flex:none}
 .docic svg{width:17px;height:17px;stroke:var(--blue-hi);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .docrow .dm{flex:1;min-width:0}.docrow .dm .t{font-weight:600;font-size:13.5px}.docrow .dm .d{font-size:11.5px;color:var(--faint);font-family:ui-monospace,monospace}
 
-/* quarterly bars */
 .qbars{display:flex;align-items:flex-end;gap:14px;height:150px;padding-top:10px}
 .qbars .q{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
 .qbars .bar{width:100%;max-width:42px;border-radius:7px 7px 0 0;background:var(--grad);position:relative}
@@ -210,7 +192,6 @@ td .co .nm{font-weight:650;font-variant-numeric:normal}
 
 footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:#4c5068;font-size:11px;line-height:1.6}
 
-/* mobile */
 .hamb{display:none}
 @media(max-width:1000px){
   .shell{grid-template-columns:1fr}
@@ -243,7 +224,7 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
   <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search portfolio…<kbd>⌘K</kbd></div>
   <a class="buy" href="https://jup.ag/tokens/HmjCoarLh5duURfJ333DwfFiPyTCgFT35pRSAoP8pump" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg>Buy $TOS</a>
   <button class="bell" onclick="toast('3 new updates in your data room.')" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg><i></i></button>
-  <div class="acct"><span class="av" id="avatar">I</span><div><div class="nm" id="whoTop">investor</div><div class="rl">Limited Partner</div></div></div>
+  <div class="acct"><span class="av" id="avatar">I</span><div><div class="nm" id="whoTop">investor</div><div class="rl" id="tierTop">Limited Partner</div></div></div>
 </div></div>
 
 <div class="scrim" id="scrim" onclick="toggleSide()"></div>
@@ -255,38 +236,31 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
     <div class="nav" data-tab="holdings"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Holdings</div>
     <div class="nav" data-tab="performance"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-5 3 3 5-7"/></svg>Performance</div>
     <div class="nav" data-tab="allocations"><svg viewBox="0 0 24 24"><path d="M12 2v10l8 4"/><circle cx="12" cy="12" r="10"/></svg>Allocations</div>
-
     <div class="navgroup">Opportunities</div>
     <div class="nav" data-tab="deals"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/><circle cx="19" cy="19" r="2.5"/></svg>Deal flow<span class="badge">3</span></div>
     <div class="nav" data-tab="watchlist"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 18l-5.9 3 1.2-6.5L2.5 9.9 9 9z"/></svg>Watchlist</div>
-
     <div class="navgroup">Reporting</div>
     <div class="nav" data-tab="statements"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M9 12h6M9 16h6M9 8h3"/></svg>Statements</div>
     <div class="nav" data-tab="documents"><svg viewBox="0 0 24 24"><path d="M14 3v5h5"/><path d="M6 3h8l5 5v13H6z"/><path d="M9 13h6M9 17h4"/></svg>Data room</div>
     <div class="nav" data-tab="activity"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>Activity</div>
-
     <div class="navgroup">Account</div>
     <div class="nav" data-tab="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.3l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2.3-1.3L14 2h-4l-.3 2.2a7 7 0 0 0-2.3 1.3l-2.3-1-2 3.4 2 1.5A7 7 0 0 0 5 12a7 7 0 0 0 .1 1.3l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2.3 1.3L10 22h4l.3-2.2a7 7 0 0 0 2.3-1.3l2.3 1 2-3.4-2-1.5A7 7 0 0 0 19 12z"/></svg>Settings</div>
-
     <div class="grow"></div>
     <div class="sidecard">
-      <div class="t"><b>Capital called</b> — you're 100% funded on your <b>$25,000</b> Fund II commitment.</div>
-      <div class="pfill"><i></i></div>
-      <div class="t" style="font-size:11px;color:var(--faint)">Called $25,000 · Unfunded $0</div>
+      <div class="t" id="scText"></div>
+      <div class="pfill"><i id="scFill"></i></div>
+      <div class="t" id="scSub" style="font-size:11px;color:var(--faint)"></div>
     </div>
   </aside>
 
   <main>
-    <!-- ============ OVERVIEW ============ -->
+    <!-- OVERVIEW -->
     <section class="tab on" id="overview">
       <div class="phead">
         <div>
           <h1>Welcome back, <span id="who1">investor</span>.</h1>
           <p>Your VentureOS Fund II position at a glance.</p>
-          <a class="btn btn-p buyvos" id="buyVosBtn" href="#" onclick="toast('$VOS purchase link coming soon.');return false;">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.5 10h3.2a1.8 1.8 0 0 1 0 3.6H9.3"/></svg>
-            Buy $VOS
-          </a>
+          <a class="btn btn-p buyvos" id="buyVosBtn" href="#" onclick="toast('$VOS purchase link coming soon.');return false;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.5 10h3.2a1.8 1.8 0 0 1 0 3.6H9.3"/></svg>Buy $VOS</a>
         </div>
         <span class="pill"><i></i>NAV updated · today 09:00 ET</span>
       </div>
@@ -296,141 +270,82 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
           <div class="ch">
             <div><span class="k">Net asset value</span></div>
             <div class="ranges" id="ranges">
-              <button class="range" data-r="1M">1M</button>
-              <button class="range" data-r="3M">3M</button>
-              <button class="range" data-r="1Y">1Y</button>
-              <button class="range on" data-r="ALL">All</button>
+              <button class="range" data-r="1M">1M</button><button class="range" data-r="3M">3M</button>
+              <button class="range" data-r="1Y">1Y</button><button class="range on" data-r="ALL">All</button>
             </div>
           </div>
-          <div class="big num">$63,900</div>
-          <span class="delta"><svg viewBox="0 0 24 24"><path d="M4 18 L11 10 L15 14 L21 6"/><path d="M21 11V6h-5"/></svg>+$38,900 <span class="mut">(+155.6% since inception)</span></span>
+          <div class="big num" id="navValue">$0</div>
+          <span class="delta" id="navDelta"></span>
           <div class="chartwrap">
             <svg class="chart" id="navChart" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true"></svg>
             <div class="tip" id="navTip"><div class="v">—</div><div class="d">—</div></div>
           </div>
         </div>
-
         <div class="card">
           <div class="ch"><h3>Capital account</h3><span class="chip">Fund II · LP</span></div>
           <div class="kvlist">
-            <div class="kvrow"><span class="k">Committed</span><span class="v num">$25,000</span></div>
-            <div class="kvrow"><span class="k">Called</span><span class="v num">$25,000</span></div>
-            <div class="kvrow"><span class="k">Distributed</span><span class="v num up">$8,400</span></div>
-            <div class="kvrow"><span class="k">Net asset value</span><span class="v num">$63,900</span></div>
-            <div class="kvrow"><span class="k">Total value</span><span class="v num">$72,300</span></div>
+            <div class="kvrow"><span class="k">Committed</span><span class="v num" id="caCommitted"></span></div>
+            <div class="kvrow"><span class="k">Called</span><span class="v num" id="caCalled"></span></div>
+            <div class="kvrow"><span class="k">Distributed</span><span class="v num up" id="caDistributed"></span></div>
+            <div class="kvrow"><span class="k">Net asset value</span><span class="v num" id="caNav"></span></div>
+            <div class="kvrow"><span class="k">Total value</span><span class="v num" id="caTotal"></span></div>
           </div>
         </div>
       </div>
 
-      <div class="metrics">
-        <div class="metric"><div class="k">TVPI</div><div class="n">2.89×</div><div class="t"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 15l6-6 6 6"/></svg>+0.21× QoQ</div><div class="hint">Total value / paid-in</div></div>
-        <div class="metric"><div class="k">DPI</div><div class="n">0.34×</div><div class="t">1 distribution</div><div class="hint">Cash returned / paid-in</div></div>
-        <div class="metric"><div class="k">Net IRR</div><div class="n">47.2%</div><div class="t"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 15l6-6 6 6"/></svg>+3.1 pts</div><div class="hint">Since inception, net of fees</div></div>
-        <div class="metric"><div class="k">MOIC</div><div class="n">2.56×</div><div class="t">unrealized</div><div class="hint">Current mark / cost</div></div>
-      </div>
+      <div class="metrics" id="ovMetrics"></div>
 
       <div class="two">
         <div class="card">
           <div class="ch"><h3>Allocation by sector</h3><span class="link" onclick="go('allocations')">Details →</span></div>
-          <div class="alloc">
-            <div class="donut"></div>
-            <div class="leg">
-              <div class="li"><span class="dot" style="background:#5d78ff"></span>Infrastructure <b>34%</b></div>
-              <div class="li"><span class="dot" style="background:#1fd18a"></span>DeFi <b>24%</b></div>
-              <div class="li"><span class="dot" style="background:#c3acff"></span>AI / Agents <b>22%</b></div>
-              <div class="li"><span class="dot" style="background:#f5b34a"></span>Gaming <b>20%</b></div>
-            </div>
-          </div>
+          <div class="alloc"><div class="donut" id="ovDonut"></div><div class="leg" id="ovLegend"></div></div>
         </div>
         <div class="card">
           <div class="ch"><h3>Recent activity</h3><span class="link" onclick="go('activity')">View all →</span></div>
-          <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span><div class="am"><div class="t">Distribution — Nexus secondary</div><div class="d">Jul 9, 2026</div></div><span class="amt up">+$3,100</span></div>
-          <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span><div class="am"><div class="t">Allocation — Stormline Series A</div><div class="d">Jun 28, 2026</div></div><span class="amt">$5,000</span></div>
-          <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M4 18 L10 12 L14 15 L20 8"/></svg></span><div class="am"><div class="t">Mark-up — Orbit → 6.3×</div><div class="d">Jun 15, 2026</div></div><span class="amt up">+$4,200</span></div>
+          <div id="recentAct"></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ HOLDINGS ============ -->
+    <!-- HOLDINGS -->
     <section class="tab" id="holdings">
-      <div class="phead"><div><h1>Holdings</h1><p>VentureOS Fund II portfolio — 27 companies, 2 exited.</p></div><span class="pill">Net MOIC 2.9×</span></div>
+      <div class="phead"><div><h1>Holdings</h1><p>Your positions in VentureOS Fund II.</p></div><span class="pill" id="holdingsPill"></span></div>
       <div class="card"><div class="tablewrap"><table>
-        <thead><tr><th>Company</th><th>Stage</th><th>Entry</th><th class="r">Mark</th><th class="r">Fund weight</th></tr></thead>
-        <tbody>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#1e3cf0,#5d78ff)">NX</span><div><div class="nm">Nexus</div><span class="chip">infra · rpc</span></div></div></td><td>Series A</td><td>Q3 '24</td><td class="r up">4.1×</td><td class="r"><span class="wbar"><i style="width:82%"></i></span> 12%</td></tr>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#12b869,#1fd18a)">OR</span><div><div class="nm">Orbit</div><span class="chip">ai · agents</span></div></div></td><td>Series B</td><td>Q1 '25</td><td class="r up">6.3×</td><td class="r"><span class="wbar"><i style="width:74%"></i></span> 11%</td></tr>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#4b3bd8,#9d6bff)">VC</span><div><div class="nm">VaultCore</div><span class="chip">infra · custody</span></div></div></td><td>Series A</td><td>Q4 '24</td><td class="r up">3.4×</td><td class="r"><span class="wbar"><i style="width:60%"></i></span> 9%</td></tr>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#0e9d6b,#1fd18a)">HX</span><div><div class="nm">Helix</div><span class="chip">defi · perps</span></div></div></td><td>Seed</td><td>Q2 '25</td><td class="r up">2.7×</td><td class="r"><span class="wbar"><i style="width:52%"></i></span> 8%</td></tr>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#e0902a,#f5b34a)">PX</span><div><div class="nm">Pixel Forge</div><span class="chip">gaming</span></div></div></td><td>Seed</td><td>Q1 '25</td><td class="r up">1.8×</td><td class="r"><span class="wbar"><i style="width:44%"></i></span> 7%</td></tr>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#2f54ff,#1e3cf0)">AP</span><div><div class="nm">Aperture</div><span class="chip">ai · data</span></div></div></td><td>Seed</td><td>Q2 '25</td><td class="r up">1.5×</td><td class="r"><span class="wbar"><i style="width:38%"></i></span> 6%</td></tr>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#5d78ff,#c3acff)">QT</span><div><div class="nm">Quanta</div><span class="chip">infra · zk</span></div></div></td><td>Pre-seed</td><td>Q2 '25</td><td class="r">1.0×</td><td class="r"><span class="wbar"><i style="width:22%"></i></span> 4%</td></tr>
-        </tbody>
+        <thead><tr><th>Company</th><th>Stage</th><th>Entry</th><th class="r">Mark</th><th class="r">Weight</th></tr></thead>
+        <tbody id="holdingsBody"></tbody>
       </table></div></div>
     </section>
 
-    <!-- ============ PERFORMANCE ============ -->
+    <!-- PERFORMANCE -->
     <section class="tab" id="performance">
-      <div class="phead"><div><h1>Performance</h1><p>Net-of-fees returns since your Fund II subscription.</p></div><span class="pill"><i></i>Net IRR 47.2%</span></div>
-      <div class="metrics" style="margin-top:0">
-        <div class="metric"><div class="k">TVPI</div><div class="n">2.89×</div><div class="hint">vs 1.9× median¹</div></div>
-        <div class="metric"><div class="k">Net IRR</div><div class="n">47.2%</div><div class="hint">top-quartile¹</div></div>
-        <div class="metric"><div class="k">Realized</div><div class="n">$8.4k</div><div class="hint">1 exit + 1 secondary</div></div>
-        <div class="metric"><div class="k">Unrealized</div><div class="n">$63.9k</div><div class="hint">marked, 7 positions</div></div>
-      </div>
+      <div class="phead"><div><h1>Performance</h1><p>Net-of-fees returns since your Fund II subscription.</p></div><span class="pill" id="perfIrr"><i></i></span></div>
+      <div class="metrics" id="perfMetrics" style="margin-top:0"></div>
       <div class="card" style="margin-top:16px">
-        <div class="ch"><h3>Quarterly value growth</h3><span class="chip">total value, $k</span></div>
-        <div class="qbars">
-          <div class="q"><div class="bar" style="height:34%"><span>$29k</span></div><div class="lab">Q3'25</div></div>
-          <div class="q"><div class="bar" style="height:48%"><span>$41k</span></div><div class="lab">Q4'25</div></div>
-          <div class="q"><div class="bar" style="height:62%"><span>$52k</span></div><div class="lab">Q1'26</div></div>
-          <div class="q"><div class="bar" style="height:100%"><span>$72k</span></div><div class="lab">Q2'26</div></div>
-        </div>
+        <div class="ch"><h3>Quarterly value growth</h3><span class="chip">total value</span></div>
+        <div class="qbars" id="qbars"></div>
       </div>
       <footer>¹ Benchmark figures are illustrative and shown for context only.</footer>
     </section>
 
-    <!-- ============ ALLOCATIONS ============ -->
+    <!-- ALLOCATIONS -->
     <section class="tab" id="allocations">
       <div class="phead"><div><h1>Allocations</h1><p>Your committed capital across deals and sectors.</p></div></div>
       <div class="two" style="margin-top:0">
-        <div class="card">
-          <div class="ch"><h3>By sector</h3></div>
-          <div class="alloc"><div class="donut"></div>
-            <div class="leg">
-              <div class="li"><span class="dot" style="background:#5d78ff"></span>Infrastructure <b>34%</b></div>
-              <div class="li"><span class="dot" style="background:#1fd18a"></span>DeFi <b>24%</b></div>
-              <div class="li"><span class="dot" style="background:#c3acff"></span>AI / Agents <b>22%</b></div>
-              <div class="li"><span class="dot" style="background:#f5b34a"></span>Gaming <b>20%</b></div>
-            </div></div>
-        </div>
-        <div class="card">
-          <div class="ch"><h3>By stage</h3></div>
-          <div class="kvlist">
-            <div class="kvrow"><span class="k">Pre-seed</span><span class="v num">12%</span></div>
-            <div class="kvrow"><span class="k">Seed</span><span class="v num">41%</span></div>
-            <div class="kvrow"><span class="k">Series A</span><span class="v num">33%</span></div>
-            <div class="kvrow"><span class="k">Series B+</span><span class="v num">14%</span></div>
-          </div>
-        </div>
+        <div class="card"><div class="ch"><h3>By sector</h3></div><div class="alloc"><div class="donut" id="allocDonut"></div><div class="leg" id="allocLegend"></div></div></div>
+        <div class="card"><div class="ch"><h3>By stage</h3></div><div class="kvlist" id="stageList"></div></div>
       </div>
       <div class="card" style="margin-top:16px">
-        <div class="ch"><h3>Your commitments</h3><span class="chip">5 active</span></div>
+        <div class="ch"><h3>Your commitments</h3><span class="chip" id="commitCount"></span></div>
         <div class="tablewrap"><table>
           <thead><tr><th>Deal</th><th>Date</th><th class="r">Committed</th><th class="r">Status</th></tr></thead>
-          <tbody>
-            <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#1e3cf0,#5d78ff)">NX</span><div class="nm">Nexus</div></div></td><td>Q3 '24</td><td class="r num">$6,000</td><td class="r"><span class="chip" style="color:#7ff0c0;border-color:rgba(31,209,138,.3)">funded</span></td></tr>
-            <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#12b869,#1fd18a)">OR</span><div class="nm">Orbit</div></div></td><td>Q1 '25</td><td class="r num">$4,000</td><td class="r"><span class="chip" style="color:#7ff0c0;border-color:rgba(31,209,138,.3)">funded</span></td></tr>
-            <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#4b3bd8,#9d6bff)">VC</span><div class="nm">VaultCore</div></div></td><td>Q4 '24</td><td class="r num">$5,000</td><td class="r"><span class="chip" style="color:#7ff0c0;border-color:rgba(31,209,138,.3)">funded</span></td></tr>
-            <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#7c5cff,#5d78ff)">SM</span><div class="nm">Stormline</div></div></td><td>Q2 '26</td><td class="r num">$5,000</td><td class="r"><span class="chip" style="color:#f5b34a;border-color:rgba(245,179,74,.3)">pending</span></td></tr>
-          </tbody>
+          <tbody id="commitBody"></tbody>
         </table></div>
       </div>
     </section>
 
-    <!-- ============ DEAL FLOW ============ -->
+    <!-- DEAL FLOW (fund-level, same for all LPs) -->
     <section class="tab" id="deals">
       <div class="phead"><div><h1>Deal flow</h1><p>Vetted rounds open to Fund II LPs. Allocate directly from the portal.</p></div><span class="pill"><i></i>Q3 · 3 open</span></div>
-
       <div class="deal">
         <div class="top"><span class="logo" style="background:linear-gradient(135deg,#4162ff,#1e3cf0)">AB</span><div><div class="nm" style="font-weight:700">Aperture Labs</div><div class="meta">Seed · $4M round · lead: VentureOS</div></div><span class="chip" style="margin-left:auto;color:#7ff0c0;border-color:rgba(31,209,138,.3)">allocation open</span></div>
         <div class="desc">On-chain data availability layer for AI agents. Strong early traction with 3 ecosystem integrations; VentureOS leading the round.</div>
@@ -438,7 +353,6 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
         <div class="pf"><span>$2.56M committed</span><span>64% of $4M</span></div>
         <div class="row2"><div style="font-size:12px;color:var(--muted)">Min allocation <b class="num" style="color:var(--ink)">$2,500</b> · closes in 6 days</div><div><button class="btn btn-o sm" onclick="toast('Deal memo opens in the live portal.')">View memo</button> <button class="btn btn-p sm" onclick="toast('Allocation flow opens in the live portal.')">Allocate</button></div></div>
       </div>
-
       <div class="deal">
         <div class="top"><span class="logo" style="background:linear-gradient(135deg,#7c5cff,#5d78ff)">SM</span><div><div class="nm" style="font-weight:700">Stormline</div><div class="meta">Series A · $9M round · co-invest</div></div><span class="chip" style="margin-left:auto;color:#f5b34a;border-color:rgba(245,179,74,.3)">closing soon</span></div>
         <div class="desc">High-throughput perps exchange. 3 days left in the round; VentureOS pro-rata secured, LP co-invest allocation remaining.</div>
@@ -446,7 +360,6 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
         <div class="pf"><span>$7.9M committed</span><span>88% of $9M</span></div>
         <div class="row2"><div style="font-size:12px;color:var(--muted)">Min allocation <b class="num" style="color:var(--ink)">$5,000</b> · closes in 3 days</div><div><button class="btn btn-o sm" onclick="toast('Deal memo opens in the live portal.')">View memo</button> <button class="btn btn-p sm" onclick="toast('Allocation flow opens in the live portal.')">Allocate</button></div></div>
       </div>
-
       <div class="deal">
         <div class="top"><span class="logo" style="background:linear-gradient(135deg,#12b869,#1fd18a)">QZ</span><div><div class="nm" style="font-weight:700">Quanta</div><div class="meta">Pre-seed · $1.5M round</div></div><span class="chip" style="margin-left:auto;color:#7ff0c0;border-color:rgba(31,209,138,.3)">allocation open</span></div>
         <div class="desc">Zero-knowledge coprocessor for verifiable off-chain compute. Technical founding team; early but high-conviction.</div>
@@ -456,7 +369,7 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
       </div>
     </section>
 
-    <!-- ============ WATCHLIST ============ -->
+    <!-- WATCHLIST (fund-level) -->
     <section class="tab" id="watchlist">
       <div class="phead"><div><h1>Watchlist</h1><p>Companies the GP team is tracking ahead of a round.</p></div></div>
       <div class="card"><div class="tablewrap"><table>
@@ -469,25 +382,18 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
       </table></div></div>
     </section>
 
-    <!-- ============ STATEMENTS ============ -->
+    <!-- STATEMENTS -->
     <section class="tab" id="statements">
       <div class="phead"><div><h1>Statements</h1><p>Capital calls, distributions, and quarterly capital-account statements.</p></div></div>
       <div class="card"><div class="tablewrap"><table>
         <thead><tr><th>Date</th><th>Type</th><th>Reference</th><th class="r">Amount</th></tr></thead>
-        <tbody>
-          <tr class="rowh"><td>Jul 9, 2026</td><td>Distribution</td><td>Nexus secondary</td><td class="r up num">+$3,100</td></tr>
-          <tr class="rowh"><td>Jun 28, 2026</td><td>Capital call</td><td>Stormline Series A</td><td class="r num">−$5,000</td></tr>
-          <tr class="rowh"><td>Apr 30, 2026</td><td>Distribution</td><td>Helix token unlock</td><td class="r up num">+$5,300</td></tr>
-          <tr class="rowh"><td>Q2 2026</td><td>Statement</td><td>Capital account — Q2</td><td class="r"><span class="link" onclick="toast('Statement opens in the live portal.')">Open PDF</span></td></tr>
-          <tr class="rowh"><td>Q1 2026</td><td>Statement</td><td>Capital account — Q1</td><td class="r"><span class="link" onclick="toast('Statement opens in the live portal.')">Open PDF</span></td></tr>
-          <tr class="rowh"><td>Jan 15, 2026</td><td>Capital call</td><td>Fund II initial draw</td><td class="r num">−$20,000</td></tr>
-        </tbody>
+        <tbody id="statementsBody"></tbody>
       </table></div></div>
     </section>
 
-    <!-- ============ DATA ROOM ============ -->
+    <!-- DATA ROOM (fund-level docs, watermark per user) -->
     <section class="tab" id="documents">
-      <div class="phead"><div><h1>Data room</h1><p>Reports, statements, and diligence — permissioned to your account.</p></div><span class="pill">watermarked · DFasher</span></div>
+      <div class="phead"><div><h1>Data room</h1><p>Reports, statements, and diligence — permissioned to your account.</p></div><span class="pill" id="dataWm">watermarked</span></div>
       <div class="card">
         <div class="docrow"><span class="docic"><svg viewBox="0 0 24 24"><path d="M14 3v5h5"/><path d="M6 3h8l5 5v13H6z"/><path d="M9 13h6M9 17h4"/></svg></span><div class="dm"><div class="t">Q2 2026 LP Report</div><div class="d">PDF · updated Jul 12</div></div><button class="btn btn-o sm" onclick="toast('Document opens in the live portal.')">Open</button></div>
         <div class="docrow"><span class="docic"><svg viewBox="0 0 24 24"><path d="M14 3v5h5"/><path d="M6 3h8l5 5v13H6z"/><path d="M9 13h6M9 17h4"/></svg></span><div class="dm"><div class="t">Fund II — Capital Account Statement</div><div class="d">PDF · Q2 2026</div></div><button class="btn btn-o sm" onclick="toast('Document opens in the live portal.')">Open</button></div>
@@ -497,20 +403,13 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
       </div>
     </section>
 
-    <!-- ============ ACTIVITY ============ -->
+    <!-- ACTIVITY -->
     <section class="tab" id="activity">
       <div class="phead"><div><h1>Activity</h1><p>Everything that's happened across your position.</p></div></div>
-      <div class="card">
-        <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span><div class="am"><div class="t">Distribution — Nexus secondary</div><div class="d">Jul 9, 2026 · settled to wallet</div></div><span class="amt up">+$3,100</span></div>
-        <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span><div class="am"><div class="t">Allocation — Stormline Series A</div><div class="d">Jun 28, 2026 · capital called</div></div><span class="amt">$5,000</span></div>
-        <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M4 18 L10 12 L14 15 L20 8"/></svg></span><div class="am"><div class="t">Mark-up — Orbit → 6.3×</div><div class="d">Jun 15, 2026 · Series B pricing</div></div><span class="amt up">+$4,200</span></div>
-        <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 2v6M12 8l4-2M12 8l-4-2"/><circle cx="12" cy="15" r="6"/></svg></span><div class="am"><div class="t">Reward — $TOS staking epoch 42</div><div class="d">Jun 1, 2026</div></div><span class="amt up">+180 $TOS</span></div>
-        <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span><div class="am"><div class="t">Distribution — Helix token unlock</div><div class="d">Apr 30, 2026 · settled to wallet</div></div><span class="amt up">+$5,300</span></div>
-        <div class="act"><span class="ai"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></span><div class="am"><div class="t">Access granted — Fund II data room</div><div class="d">Jan 15, 2026</div></div><span class="amt">—</span></div>
-      </div>
+      <div class="card"><div id="fullAct"></div></div>
     </section>
 
-    <!-- ============ SETTINGS ============ -->
+    <!-- SETTINGS -->
     <section class="tab" id="settings">
       <div class="phead"><div><h1>Settings</h1><p>Your investor profile, notifications, and session.</p></div></div>
       <div class="two" style="margin-top:0">
@@ -518,9 +417,10 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
           <div class="ch"><h3>Profile</h3></div>
           <div class="kvlist">
             <div class="kvrow"><span class="k">Username</span><span class="v" id="acctName" style="font-size:14px">investor</span></div>
-            <div class="kvrow"><span class="k">Access tier</span><span class="v" style="font-size:14px">Limited Partner</span></div>
+            <div class="kvrow"><span class="k">Access tier</span><span class="v" id="setTier" style="font-size:14px">Limited Partner</span></div>
             <div class="kvrow"><span class="k">Fund</span><span class="v" style="font-size:14px">VentureOS Fund II</span></div>
-            <div class="kvrow"><span class="k">Member since</span><span class="v" style="font-size:14px">Jan 2026</span></div>
+            <div class="kvrow"><span class="k">Member since</span><span class="v" id="setSince" style="font-size:14px">Jan 2026</span></div>
+            <div class="kvrow"><span class="k">Total commitment</span><span class="v" id="setCommit" style="font-size:14px">$25,000</span></div>
             <div class="kvrow"><span class="k">Contact</span><span class="v" style="font-size:13px">info@ventureos.capital</span></div>
           </div>
         </div>
@@ -540,14 +440,228 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
 </div>
 
 <script>
-/* ---- identity ---- */
-(function(){
-  var u=''; try{ u = sessionStorage.getItem('vos_user') || localStorage.getItem('vos_user') || 'investor'; }catch(_){ u='investor'; }
-  ['who1','whoTop','acctName'].forEach(function(id){ var el=document.getElementById(id); if(el) el.textContent=u; });
-  var av=document.getElementById('avatar'); if(av) av.textContent=(u[0]||'I').toUpperCase();
-})();
+/* ============ per-investor profiles ============ */
+var PROFILES = {
+  dfasher: {
+    name:'DFasher', tier:'Limited Partner', since:'Jan 2026',
+    committed:25000, called:25000, distributed:8400, nav:63900, total:72300,
+    deltaAbs:'+$38,900', deltaPct:'+155.6% since inception',
+    chart:{
+      '1M':[62400,62150,62800,63200,62950,63400,63150,63650,63750,63900],
+      '3M':[58400,57200,59100,60300,59750,61050,62200,61550,62800,63150,62450,63550,63900],
+      '1Y':[41500,43100,42200,46800,49500,48100,52400,50900,55800,58400,61200,63900],
+      'ALL':[25000,24200,26800,29500,28100,32400,35900,34200,39800,43100,41500,47600,52300,50100,55800,58400,61200,63900]
+    },
+    metrics:[
+      {k:'TVPI',n:'2.89×',t:'+0.21× QoQ',up:true,hint:'Total value / paid-in'},
+      {k:'DPI',n:'0.34×',t:'1 distribution',hint:'Cash returned / paid-in'},
+      {k:'Net IRR',n:'47.2%',t:'+3.1 pts',up:true,hint:'Since inception, net of fees'},
+      {k:'MOIC',n:'2.56×',t:'unrealized',hint:'Current mark / cost'}
+    ],
+    perfMetrics:[
+      {k:'TVPI',n:'2.89×',hint:'vs 1.9× median¹'},{k:'Net IRR',n:'47.2%',hint:'top-quartile¹'},
+      {k:'Realized',n:'$8.4k',hint:'1 exit + 1 secondary'},{k:'Unrealized',n:'$63.9k',hint:'marked, 7 positions'}
+    ],
+    perfIRR:'47.2%',
+    qbars:[{lab:"Q3'25",pct:34,val:'$29k'},{lab:"Q4'25",pct:48,val:'$41k'},{lab:"Q1'26",pct:62,val:'$52k'},{lab:"Q2'26",pct:100,val:'$72k'}],
+    alloc:[{label:'Infrastructure',pct:34,color:'#5d78ff'},{label:'DeFi',pct:24,color:'#1fd18a'},{label:'AI / Agents',pct:22,color:'#c3acff'},{label:'Gaming',pct:20,color:'#f5b34a'}],
+    stage:[{k:'Pre-seed',pct:12},{k:'Seed',pct:41},{k:'Series A',pct:33},{k:'Series B+',pct:14}],
+    holdingsPill:'Net MOIC 2.9×',
+    holdings:[
+      {sym:'NX',name:'Nexus',tag:'infra · rpc',color:'linear-gradient(135deg,#1e3cf0,#5d78ff)',stage:'Series A',entry:"Q3 '24",mark:'4.1×',weight:82,wpct:'12%'},
+      {sym:'OR',name:'Orbit',tag:'ai · agents',color:'linear-gradient(135deg,#12b869,#1fd18a)',stage:'Series B',entry:"Q1 '25",mark:'6.3×',weight:74,wpct:'11%'},
+      {sym:'VC',name:'VaultCore',tag:'infra · custody',color:'linear-gradient(135deg,#4b3bd8,#9d6bff)',stage:'Series A',entry:"Q4 '24",mark:'3.4×',weight:60,wpct:'9%'},
+      {sym:'HX',name:'Helix',tag:'defi · perps',color:'linear-gradient(135deg,#0e9d6b,#1fd18a)',stage:'Seed',entry:"Q2 '25",mark:'2.7×',weight:52,wpct:'8%'},
+      {sym:'PX',name:'Pixel Forge',tag:'gaming',color:'linear-gradient(135deg,#e0902a,#f5b34a)',stage:'Seed',entry:"Q1 '25",mark:'1.8×',weight:44,wpct:'7%'},
+      {sym:'AP',name:'Aperture',tag:'ai · data',color:'linear-gradient(135deg,#2f54ff,#1e3cf0)',stage:'Seed',entry:"Q2 '25",mark:'1.5×',weight:38,wpct:'6%'},
+      {sym:'QT',name:'Quanta',tag:'infra · zk',color:'linear-gradient(135deg,#5d78ff,#c3acff)',stage:'Pre-seed',entry:"Q2 '25",mark:'1.0×',flat:true,weight:22,wpct:'4%'}
+    ],
+    commitments:[
+      {sym:'NX',name:'Nexus',color:'linear-gradient(135deg,#1e3cf0,#5d78ff)',date:"Q3 '24",amount:'$6,000',status:'funded'},
+      {sym:'OR',name:'Orbit',color:'linear-gradient(135deg,#12b869,#1fd18a)',date:"Q1 '25",amount:'$4,000',status:'funded'},
+      {sym:'VC',name:'VaultCore',color:'linear-gradient(135deg,#4b3bd8,#9d6bff)',date:"Q4 '24",amount:'$5,000',status:'funded'},
+      {sym:'SM',name:'Stormline',color:'linear-gradient(135deg,#7c5cff,#5d78ff)',date:"Q2 '26",amount:'$5,000',status:'pending'}
+    ],
+    statements:[
+      {date:'Jul 9, 2026',type:'Distribution',ref:'Nexus secondary',amount:'+$3,100',cls:'up'},
+      {date:'Jun 28, 2026',type:'Capital call',ref:'Stormline Series A',amount:'−$5,000'},
+      {date:'Apr 30, 2026',type:'Distribution',ref:'Helix token unlock',amount:'+$5,300',cls:'up'},
+      {date:'Q2 2026',type:'Statement',ref:'Capital account — Q2',link:true},
+      {date:'Q1 2026',type:'Statement',ref:'Capital account — Q1',link:true},
+      {date:'Jan 15, 2026',type:'Capital call',ref:'Fund II initial draw',amount:'−$20,000'}
+    ],
+    activity:[
+      {icon:'in',title:'Distribution — Nexus secondary',detail:'Jul 9, 2026 · settled to wallet',amt:'+$3,100',up:true},
+      {icon:'out',title:'Allocation — Stormline Series A',detail:'Jun 28, 2026 · capital called',amt:'$5,000'},
+      {icon:'mark',title:'Mark-up — Orbit → 6.3×',detail:'Jun 15, 2026 · Series B pricing',amt:'+$4,200',up:true},
+      {icon:'reward',title:'Reward — $TOS staking epoch 42',detail:'Jun 1, 2026',amt:'+180 $TOS',up:true},
+      {icon:'in',title:'Distribution — Helix token unlock',detail:'Apr 30, 2026 · settled to wallet',amt:'+$5,300',up:true},
+      {icon:'shield',title:'Access granted — Fund II data room',detail:'Jan 15, 2026',amt:'—'}
+    ]
+  },
+  glen53: {
+    name:'Glen53', tier:'General Partner', since:'Aug 2025',
+    committed:100000, called:85000, distributed:22600, nav:214500, total:237100,
+    deltaAbs:'+$152,100', deltaPct:'+178.9% since inception',
+    chart:{
+      '1M':[208000,207000,210000,212000,211000,213000,212500,214000,214200,214500],
+      '3M':[193000,189000,198000,205000,201000,208000,212000,209000,213000,214000,213500,214200,214500],
+      '1Y':[116000,121000,116000,138000,148000,152000,168000,159000,178000,193000,205000,214500],
+      'ALL':[45000,43000,52000,61000,58000,72000,88000,84000,102000,121000,116000,138000,159000,152000,178000,193000,205000,214500]
+    },
+    metrics:[
+      {k:'TVPI',n:'2.79×',t:'+0.18× QoQ',up:true,hint:'Total value / paid-in'},
+      {k:'DPI',n:'0.27×',t:'2 distributions',hint:'Cash returned / paid-in'},
+      {k:'Net IRR',n:'61.8%',t:'+4.4 pts',up:true,hint:'Since inception, net of fees'},
+      {k:'MOIC',n:'3.11×',t:'unrealized',hint:'Current mark / cost'}
+    ],
+    perfMetrics:[
+      {k:'TVPI',n:'2.79×',hint:'vs 1.9× median¹'},{k:'Net IRR',n:'61.8%',hint:'top-decile¹'},
+      {k:'Realized',n:'$22.6k',hint:'2 exits'},{k:'Unrealized',n:'$214.5k',hint:'marked, 7 positions'}
+    ],
+    perfIRR:'61.8%',
+    qbars:[{lab:"Q3'25",pct:30,val:'$96k'},{lab:"Q4'25",pct:52,val:'$150k'},{lab:"Q1'26",pct:74,val:'$198k'},{lab:"Q2'26",pct:100,val:'$237k'}],
+    alloc:[{label:'DeFi',pct:38,color:'#1fd18a'},{label:'AI / Agents',pct:30,color:'#c3acff'},{label:'Infrastructure',pct:18,color:'#5d78ff'},{label:'Consumer',pct:14,color:'#f5b34a'}],
+    stage:[{k:'Pre-seed',pct:6},{k:'Seed',pct:28},{k:'Series A',pct:44},{k:'Series B+',pct:22}],
+    holdingsPill:'Net MOIC 3.1×',
+    holdings:[
+      {sym:'MR',name:'Meridian',tag:'defi · lending',color:'linear-gradient(135deg,#0e9d6b,#1fd18a)',stage:'Series B',entry:"Q4 '24",mark:'5.8×',weight:88,wpct:'15%'},
+      {sym:'CB',name:'Cobalt',tag:'ai · infra',color:'linear-gradient(135deg,#4b3bd8,#9d6bff)',stage:'Series A',entry:"Q2 '25",mark:'3.9×',weight:70,wpct:'12%'},
+      {sym:'SB',name:'Sable',tag:'payments',color:'linear-gradient(135deg,#1e3cf0,#5d78ff)',stage:'Series A',entry:"Q3 '24",mark:'4.4×',weight:64,wpct:'11%'},
+      {sym:'FR',name:'Ferro',tag:'rwa · credit',color:'linear-gradient(135deg,#e0902a,#f5b34a)',stage:'Series B',entry:"Q1 '25",mark:'2.9×',weight:55,wpct:'9%'},
+      {sym:'HL',name:'Halcyon',tag:'ai · agents',color:'linear-gradient(135deg,#5d78ff,#c3acff)',stage:'Seed',entry:"Q2 '25",mark:'6.7×',weight:48,wpct:'8%'},
+      {sym:'VX',name:'Vertex',tag:'infra · depin',color:'linear-gradient(135deg,#12b869,#1fd18a)',stage:'Series A',entry:"Q4 '24",mark:'3.2×',weight:40,wpct:'7%'},
+      {sym:'NV',name:'Nova',tag:'consumer · social',color:'linear-gradient(135deg,#7c5cff,#5d78ff)',stage:'Seed',entry:"Q1 '25",mark:'2.1×',weight:32,wpct:'5%'}
+    ],
+    commitments:[
+      {sym:'MR',name:'Meridian',color:'linear-gradient(135deg,#0e9d6b,#1fd18a)',date:"Q4 '24",amount:'$20,000',status:'funded'},
+      {sym:'CB',name:'Cobalt',color:'linear-gradient(135deg,#4b3bd8,#9d6bff)',date:"Q2 '25",amount:'$18,000',status:'funded'},
+      {sym:'SB',name:'Sable',color:'linear-gradient(135deg,#1e3cf0,#5d78ff)',date:"Q3 '24",amount:'$15,000',status:'funded'},
+      {sym:'FR',name:'Ferro',color:'linear-gradient(135deg,#e0902a,#f5b34a)',date:"Q1 '25",amount:'$12,000',status:'funded'},
+      {sym:'HL',name:'Halcyon',color:'linear-gradient(135deg,#5d78ff,#c3acff)',date:"Q2 '26",amount:'$20,000',status:'pending'}
+    ],
+    statements:[
+      {date:'Jul 2, 2026',type:'Distribution',ref:'Meridian secondary',amount:'+$9,400',cls:'up'},
+      {date:'Jun 20, 2026',type:'Capital call',ref:'Halcyon Seed II',amount:'−$20,000'},
+      {date:'Mar 14, 2026',type:'Distribution',ref:'Sable partial exit',amount:'+$13,200',cls:'up'},
+      {date:'Q2 2026',type:'Statement',ref:'Capital account — Q2',link:true},
+      {date:'Q1 2026',type:'Statement',ref:'Capital account — Q1',link:true},
+      {date:'Aug 20, 2025',type:'Capital call',ref:'Fund II initial draw',amount:'−$45,000'}
+    ],
+    activity:[
+      {icon:'in',title:'Distribution — Meridian secondary',detail:'Jul 2, 2026 · settled to wallet',amt:'+$9,400',up:true},
+      {icon:'out',title:'Allocation — Halcyon Seed II',detail:'Jun 20, 2026 · capital called',amt:'$20,000'},
+      {icon:'mark',title:'Mark-up — Halcyon → 6.7×',detail:'Jun 8, 2026 · new round',amt:'+$18,300',up:true},
+      {icon:'reward',title:'Reward — $TOS staking epoch 42',detail:'Jun 1, 2026',amt:'+640 $TOS',up:true},
+      {icon:'in',title:'Distribution — Sable partial exit',detail:'Mar 14, 2026 · settled to wallet',amt:'+$13,200',up:true},
+      {icon:'shield',title:'Access granted — Fund II data room',detail:'Aug 20, 2025',amt:'—'}
+    ]
+  }
+};
 
-/* ---- tab nav ---- */
+/* ============ render helpers ============ */
+var UP='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 15l6-6 6 6"/></svg>';
+var ACT_ICONS={
+  in:'<path d="M12 5v14M5 12l7 7 7-7"/>',
+  out:'<path d="M12 19V5M5 12l7-7 7 7"/>',
+  mark:'<path d="M4 18 L10 12 L14 15 L20 8"/>',
+  reward:'<path d="M12 2v6M12 8l4-2M12 8l-4-2"/><circle cx="12" cy="15" r="6"/>',
+  shield:'<path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/>'
+};
+function fmtUsd(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+function set(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+function metricHtml(m){
+  var t=m.t?('<div class="t'+(m.up===false?' dn':'')+'">'+(m.up===true?UP+' ':'')+m.t+'</div>'):'';
+  return '<div class="metric"><div class="k">'+m.k+'</div><div class="n">'+m.n+'</div>'+t+'<div class="hint">'+(m.hint||'')+'</div></div>';
+}
+function legendHtml(a){ return a.map(function(s){return '<div class="li"><span class="dot" style="background:'+s.color+'"></span>'+s.label+' <b>'+s.pct+'%</b></div>';}).join(''); }
+function setDonut(el,a){ if(!el)return; var acc=0,st=[]; a.forEach(function(s){ st.push(s.color+' '+acc+'% '+(acc+s.pct)+'%'); acc+=s.pct; }); el.style.background='conic-gradient('+st.join(',')+')'; }
+function holdRow(h){ return '<tr class="rowh"><td><div class="co"><span class="logo" style="background:'+h.color+'">'+h.sym+'</span><div><div class="nm">'+h.name+'</div><span class="chip">'+h.tag+'</span></div></div></td><td>'+h.stage+'</td><td>'+h.entry+'</td><td class="r'+(h.flat?'':' up')+'">'+h.mark+'</td><td class="r"><span class="wbar"><i style="width:'+h.weight+'%"></i></span> '+h.wpct+'</td></tr>'; }
+function commitRow(c){ var cs=c.status==='funded'?'color:#7ff0c0;border-color:rgba(31,209,138,.3)':'color:#f5b34a;border-color:rgba(245,179,74,.3)'; return '<tr class="rowh"><td><div class="co"><span class="logo" style="background:'+c.color+'">'+c.sym+'</span><div class="nm">'+c.name+'</div></div></td><td>'+c.date+'</td><td class="r num">'+c.amount+'</td><td class="r"><span class="chip" style="'+cs+'">'+c.status+'</span></td></tr>'; }
+function stmtRow(s){ var a=s.link?'<span class="link" onclick="toast(\'Statement opens in the live portal.\')">Open PDF</span>':'<span class="'+(s.cls||'')+' num">'+s.amount+'</span>'; return '<tr class="rowh"><td>'+s.date+'</td><td>'+s.type+'</td><td>'+s.ref+'</td><td class="r">'+a+'</td></tr>'; }
+function actItem(a){ var amt=a.amt==='—'?'<span class="amt">—</span>':'<span class="amt'+(a.up?' up':'')+'">'+a.amt+'</span>'; return '<div class="act"><span class="ai"><svg viewBox="0 0 24 24">'+ACT_ICONS[a.icon]+'</svg></span><div class="am"><div class="t">'+a.title+'</div><div class="d">'+a.detail+'</div></div>'+amt+'</div>'; }
+function qbarHtml(q){ return '<div class="q"><div class="bar" style="height:'+q.pct+'%"><span>'+q.val+'</span></div><div class="lab">'+q.lab+'</div></div>'; }
+function stageRow(s){ return '<div class="kvrow"><span class="k">'+s.k+'</span><span class="v num">'+s.pct+'%</span></div>'; }
+
+var CUR;
+function render(p){
+  CUR=p;
+  set('who1',p.name); set('whoTop',p.name); set('acctName',p.name);
+  set('tierTop',p.tier); set('setTier',p.tier); set('setSince',p.since); set('setCommit',fmtUsd(p.committed));
+  var av=document.getElementById('avatar'); if(av) av.textContent=(p.name[0]||'I').toUpperCase();
+  set('dataWm','watermarked · '+p.name);
+  set('navValue',fmtUsd(p.nav));
+  document.getElementById('navDelta').innerHTML='<svg viewBox="0 0 24 24"><path d="M4 18 L11 10 L15 14 L21 6"/><path d="M21 11V6h-5"/></svg>'+p.deltaAbs+' <span class="mut">('+p.deltaPct+')</span>';
+  set('caCommitted',fmtUsd(p.committed)); set('caCalled',fmtUsd(p.called));
+  set('caDistributed',fmtUsd(p.distributed)); set('caNav',fmtUsd(p.nav)); set('caTotal',fmtUsd(p.total));
+  document.getElementById('ovMetrics').innerHTML=p.metrics.map(metricHtml).join('');
+  document.getElementById('perfMetrics').innerHTML=p.perfMetrics.map(metricHtml).join('');
+  document.getElementById('perfIrr').innerHTML='<i></i>Net IRR '+p.perfIRR;
+  setDonut(document.getElementById('ovDonut'),p.alloc); document.getElementById('ovLegend').innerHTML=legendHtml(p.alloc);
+  setDonut(document.getElementById('allocDonut'),p.alloc); document.getElementById('allocLegend').innerHTML=legendHtml(p.alloc);
+  document.getElementById('stageList').innerHTML=p.stage.map(stageRow).join('');
+  document.getElementById('holdingsBody').innerHTML=p.holdings.map(holdRow).join('');
+  set('holdingsPill',p.holdingsPill);
+  document.getElementById('commitBody').innerHTML=p.commitments.map(commitRow).join('');
+  set('commitCount',p.commitments.length+' active');
+  document.getElementById('statementsBody').innerHTML=p.statements.map(stmtRow).join('');
+  document.getElementById('recentAct').innerHTML=p.activity.slice(0,3).map(actItem).join('');
+  document.getElementById('fullAct').innerHTML=p.activity.map(actItem).join('');
+  document.getElementById('qbars').innerHTML=p.qbars.map(qbarHtml).join('');
+  var pf=Math.round(p.called/p.committed*100);
+  document.getElementById('scText').innerHTML='<b>Capital called</b> — you\'re '+pf+'% funded on your <b>'+fmtUsd(p.committed)+'</b> Fund II commitment.';
+  document.getElementById('scFill').style.width=pf+'%';
+  set('scSub','Called '+fmtUsd(p.called)+' · Unfunded '+fmtUsd(p.committed-p.called));
+  document.querySelectorAll('#ranges .range').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-r')==='ALL');});
+  renderChart('ALL');
+}
+
+/* ============ NAV chart ============ */
+var VW=1000, VH=300, PADX=6, PADT=22, PADB=8;
+function renderChart(range){
+  var d=(CUR.chart[range]||CUR.chart.ALL);
+  var min=Math.min.apply(null,d), max=Math.max.apply(null,d);
+  var pad=(max-min)*0.15||1; min-=pad; max+=pad*0.4;
+  var n=d.length;
+  var X=function(i){return PADX+(VW-2*PADX)*(i/(n-1));};
+  var Y=function(v){return PADT+(VH-PADT-PADB)*(1-(v-min)/(max-min));};
+  var line='';
+  for(var i=0;i<n;i++){ line+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(d[i]).toFixed(1)+' '; }
+  var area=line+'L'+X(n-1).toFixed(1)+' '+VH+' L'+X(0).toFixed(1)+' '+VH+' Z';
+  var grid='';
+  for(var g=1;g<=3;g++){ var gy=(PADT+(VH-PADT-PADB)*g/4).toFixed(1); grid+='<line x1="0" y1="'+gy+'" x2="'+VW+'" y2="'+gy+'" stroke="rgba(126,142,255,.08)" stroke-width="1"/>'; }
+  var ex=X(n-1).toFixed(1), ey=Y(d[n-1]).toFixed(1);
+  var svg=document.getElementById('navChart');
+  svg.innerHTML='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f54ff" stop-opacity=".34"/><stop offset="1" stop-color="#2f54ff" stop-opacity="0"/></linearGradient></defs>'+grid+'<path d="'+area+'" fill="url(#cg)"/><path d="'+line+'" fill="none" stroke="#5d78ff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/><circle cx="'+ex+'" cy="'+ey+'" r="4.5" fill="#5d78ff" stroke="#04040a" stroke-width="2"/><line id="cx" x1="0" y1="'+PADT+'" x2="0" y2="'+(VH-PADB)+'" stroke="#5d78ff" stroke-width="1" stroke-dasharray="3 3" opacity="0"/><circle id="cdot" r="4" fill="#fff" stroke="#5d78ff" stroke-width="2" opacity="0"/>';
+  svg._d=d; svg._X=X; svg._Y=Y;
+}
+(function wireHover(){
+  var wrap=document.querySelector('.chartwrap'), svg=document.getElementById('navChart'), tip=document.getElementById('navTip');
+  function move(ev){
+    var r=svg.getBoundingClientRect();
+    var px=(ev.touches?ev.touches[0].clientX:ev.clientX)-r.left;
+    var frac=Math.max(0,Math.min(1,px/r.width));
+    var d=svg._d; if(!d)return;
+    var idx=Math.round(frac*(d.length-1));
+    var cxU=svg._X(idx), cyU=svg._Y(d[idx]);
+    var cx=document.getElementById('cx'), cdot=document.getElementById('cdot');
+    cx.setAttribute('x1',cxU); cx.setAttribute('x2',cxU); cx.setAttribute('opacity','.6');
+    cdot.setAttribute('cx',cxU); cdot.setAttribute('cy',cyU); cdot.setAttribute('opacity','1');
+    tip.style.left=((cxU/VW)*r.width)+'px'; tip.style.top=((cyU/VH)*r.height)+'px'; tip.style.opacity='1';
+    tip.querySelector('.v').textContent=fmtUsd(d[idx]);
+    tip.querySelector('.d').textContent='point '+(idx+1)+' of '+d.length;
+  }
+  function leave(){ tip.style.opacity='0'; var cx=document.getElementById('cx'),cdot=document.getElementById('cdot'); if(cx)cx.setAttribute('opacity','0'); if(cdot)cdot.setAttribute('opacity','0'); }
+  wrap.addEventListener('mousemove',move); wrap.addEventListener('mouseleave',leave);
+  wrap.addEventListener('touchstart',move,{passive:true}); wrap.addEventListener('touchmove',move,{passive:true}); wrap.addEventListener('touchend',leave);
+})();
+document.getElementById('ranges').addEventListener('click',function(e){
+  var b=e.target.closest('.range'); if(!b)return;
+  this.querySelectorAll('.range').forEach(function(x){x.classList.toggle('on',x===b);});
+  renderChart(b.getAttribute('data-r'));
+});
+
+/* ============ nav / misc ============ */
 function go(tab){
   document.querySelectorAll('.nav').forEach(function(n){ n.classList.toggle('on', n.getAttribute('data-tab')===tab); });
   document.querySelectorAll('.tab').forEach(function(p){ p.classList.toggle('on', p.id===tab); });
@@ -555,80 +669,18 @@ function go(tab){
   if(window.innerWidth<=1000) closeSide();
 }
 document.querySelectorAll('.nav').forEach(function(n){ n.addEventListener('click',function(){ go(n.getAttribute('data-tab')); }); });
-
-/* ---- sidebar (mobile) ---- */
 function toggleSide(){ document.getElementById('side').classList.toggle('open'); document.getElementById('scrim').classList.toggle('on'); }
 function closeSide(){ document.getElementById('side').classList.remove('open'); document.getElementById('scrim').classList.remove('on'); }
-
-/* ---- NAV chart ---- */
-var SERIES = {
-  '1M':{ data:[62400,62150,62800,63200,62950,63400,63150,63650,63750,63900], labels:['4w','3w','2w','1w','now'] },
-  '3M':{ data:[58400,57200,59100,60300,59750,61050,62200,61550,62800,63150,62450,63550,63900], labels:['Apr','May','Jun','now'] },
-  '1Y':{ data:[41500,43100,42200,46800,49500,48100,52400,50900,55800,58400,61200,63900], labels:['Aug','Nov','Feb','May','now'] },
-  'ALL':{ data:[25000,24200,26800,29500,28100,32400,35900,34200,39800,43100,41500,47600,52300,50100,55800,58400,61200,63900], labels:["'24 Q3","'25 Q1","'25 Q3","'26 Q1","now"] }
-};
-var VW=1000, VH=300, PADX=6, PADT=22, PADB=8;
-function fmtUsd(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
-function renderChart(range){
-  var s = SERIES[range]; var d = s.data;
-  var min = Math.min.apply(null,d), max = Math.max.apply(null,d);
-  var pad = (max-min)*0.15 || 1; min -= pad; max += pad*0.4;
-  var n = d.length;
-  var X = function(i){ return PADX + (VW-2*PADX) * (i/(n-1)); };
-  var Y = function(v){ return PADT + (VH-PADT-PADB) * (1-(v-min)/(max-min)); };
-  var line='', area='';
-  for(var i=0;i<n;i++){ var x=X(i).toFixed(1), y=Y(d[i]).toFixed(1); line += (i?'L':'M')+x+' '+y+' '; }
-  area = line + 'L'+X(n-1).toFixed(1)+' '+VH+' L'+X(0).toFixed(1)+' '+VH+' Z';
-  // grid lines (3)
-  var grid='';
-  for(var g=1;g<=3;g++){ var gy=(PADT+(VH-PADT-PADB)*g/4).toFixed(1); grid+='<line x1="0" y1="'+gy+'" x2="'+VW+'" y2="'+gy+'" stroke="rgba(126,142,255,.08)" stroke-width="1"/>'; }
-  var ex=X(n-1).toFixed(1), ey=Y(d[n-1]).toFixed(1);
-  var svg = document.getElementById('navChart');
-  svg.innerHTML =
-    '<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f54ff" stop-opacity=".34"/><stop offset="1" stop-color="#2f54ff" stop-opacity="0"/></linearGradient></defs>'+
-    grid+
-    '<path d="'+area+'" fill="url(#cg)"/>'+
-    '<path d="'+line+'" fill="none" stroke="#5d78ff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>'+
-    '<circle cx="'+ex+'" cy="'+ey+'" r="4.5" fill="#5d78ff" stroke="#04040a" stroke-width="2"/>'+
-    '<line id="cx" x1="0" y1="'+PADT+'" x2="0" y2="'+(VH-PADB)+'" stroke="#5d78ff" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>'+
-    '<circle id="cdot" r="4" fill="#fff" stroke="#5d78ff" stroke-width="2" opacity="0"/>';
-  svg._d = d; svg._X = X; svg._Y = Y; svg._labels = s.labels;
-}
-(function wireHover(){
-  var wrap = document.querySelector('.chartwrap');
-  var svg = document.getElementById('navChart');
-  var tip = document.getElementById('navTip');
-  function move(ev){
-    var r = svg.getBoundingClientRect();
-    var px = (ev.touches?ev.touches[0].clientX:ev.clientX) - r.left;
-    var frac = Math.max(0, Math.min(1, px / r.width));
-    var d = svg._d; if(!d) return;
-    var idx = Math.round(frac*(d.length-1));
-    var cxUser = svg._X(idx), cyUser = svg._Y(d[idx]);
-    var cx = document.getElementById('cx'), cdot = document.getElementById('cdot');
-    cx.setAttribute('x1',cxUser); cx.setAttribute('x2',cxUser); cx.setAttribute('opacity','.6');
-    cdot.setAttribute('cx',cxUser); cdot.setAttribute('cy',cyUser); cdot.setAttribute('opacity','1');
-    var pxCss = (cxUser/VW)*r.width, pyCss = (cyUser/VH)*r.height;
-    tip.style.left = pxCss+'px'; tip.style.top = pyCss+'px'; tip.style.opacity='1';
-    tip.querySelector('.v').textContent = fmtUsd(d[idx]);
-    tip.querySelector('.d').textContent = 'point '+(idx+1)+' of '+d.length;
-  }
-  function leave(){ tip.style.opacity='0'; var cx=document.getElementById('cx'),cdot=document.getElementById('cdot'); if(cx)cx.setAttribute('opacity','0'); if(cdot)cdot.setAttribute('opacity','0'); }
-  wrap.addEventListener('mousemove',move); wrap.addEventListener('mouseleave',leave);
-  wrap.addEventListener('touchstart',move,{passive:true}); wrap.addEventListener('touchmove',move,{passive:true}); wrap.addEventListener('touchend',leave);
-})();
-document.getElementById('ranges').addEventListener('click',function(e){
-  var b = e.target.closest('.range'); if(!b) return;
-  this.querySelectorAll('.range').forEach(function(x){ x.classList.toggle('on', x===b); });
-  renderChart(b.getAttribute('data-r'));
-});
-renderChart('ALL');
-
-/* ---- misc ---- */
 function signout(){ try{ ['vos_auth','vos_user'].forEach(function(k){ sessionStorage.removeItem(k); localStorage.removeItem(k); }); }catch(_){}
   location.replace('index.html'); }
 function toast(m){ var t=document.getElementById('toast'); if(!t){ t=document.createElement('div'); t.id='toast'; document.body.appendChild(t); }
   t.textContent=m; t.classList.add('show'); clearTimeout(window._tt); window._tt=setTimeout(function(){ t.classList.remove('show'); },2600); }
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeSide(); });
+
+/* ============ boot: pick profile by logged-in user ============ */
+(function(){
+  var u=''; try{ u=(sessionStorage.getItem('vos_user')||localStorage.getItem('vos_user')||'').toLowerCase(); }catch(_){}
+  render(PROFILES[u] || PROFILES.dfasher);
+})();
 </script>
 </body></html>
