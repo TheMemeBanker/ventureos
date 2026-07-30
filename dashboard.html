@@ -168,6 +168,9 @@ td .co .nm{font-weight:650;font-variant-numeric:normal}
 .btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .buyvos{margin-top:14px;background:linear-gradient(135deg,#25dd85,#12b869);color:#04140c;box-shadow:0 12px 30px -10px rgba(20,200,120,.95),inset 0 1px 0 rgba(255,255,255,.35)}
 .buyvos:hover{filter:brightness(1.06)}
+.voslive{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:650;color:#4ee6a6;border:1px solid rgba(31,209,138,.32);background:rgba(31,209,138,.08);border-radius:20px;padding:6px 12px}
+.voslive i{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 3px rgba(31,209,138,.16);animation:lp 2.4s infinite}
+@keyframes lp{50%{opacity:.5}}
 
 .docrow{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--line2)}
 .docrow:first-child{border-top:0}
@@ -260,7 +263,10 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
         <div>
           <h1>Welcome back, <span id="who1">investor</span>.</h1>
           <p>Your VentureOS Fund II position at a glance.</p>
-          <a class="btn btn-p buyvos" id="buyVosBtn" href="#" onclick="toast('$VOS purchase link coming soon.');return false;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.5 10h3.2a1.8 1.8 0 0 1 0 3.6H9.3"/></svg>Buy $VOS</a>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px">
+            <a class="btn btn-p buyvos" id="buyVosBtn" style="margin-top:0" href="#" onclick="toast('$VOS purchase link coming soon.');return false;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.5 10h3.2a1.8 1.8 0 0 1 0 3.6H9.3"/></svg>Buy $VOS</a>
+            <span class="voslive"><i></i>Now live · July 30</span>
+          </div>
         </div>
         <span class="pill"><i></i>NAV updated · today 09:00 ET</span>
       </div>
