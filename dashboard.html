@@ -4,8 +4,9 @@
 <title>VentureOS — Investor Dashboard</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#050510">
+<meta name="theme-color" content="#0f0406">
 <script>
 (function(){ try{
   var ok = sessionStorage.getItem('vos_auth')==='1' || localStorage.getItem('vos_auth')==='1';
@@ -14,18 +15,18 @@
 </script>
 <style>
 :root{
-  --bg:#04040a; --bg2:#07070f; --panel:#0b0c17; --panel2:#0e0f1c;
-  --ink:#f6f5fd; --ink2:#c9cbe0; --muted:#8b90ab; --faint:#585d78;
-  --line:rgba(126,142,255,.13); --line2:rgba(126,142,255,.07);
-  --blue:#2f54ff; --blue-hi:#5d78ff; --blue-lo:#1e3cf0; --lilac:#c3acff;
+  --bg:#0a0406; --bg2:#0d0709; --panel:#120a0e; --panel2:#150b0f;
+  --ink:#fdf3f4; --ink2:#c9cbe0; --muted:#8b90ab; --faint:#585d78;
+  --line:rgba(220,90,105,.13); --line2:rgba(220,90,105,.07);
+  --blue:#df172a; --blue-hi:#ff4d5e; --blue-lo:#b30d1f; --lilac:#ff9db0;
   --emerald:#1fd18a; --red:#ff5d6c; --amber:#f5b34a;
-  --grad:linear-gradient(135deg,#4162ff 0%,#1e3cf0 100%);
-  --grad-soft:linear-gradient(135deg,rgba(47,84,255,.15),rgba(30,60,240,.03));
+  --grad:linear-gradient(135deg,#ee1f31 0%,#b30d1f 100%);
+  --grad-soft:linear-gradient(135deg,rgba(223,23,42,.15),rgba(150,10,30,.03));
   --shadow:0 24px 60px -34px rgba(0,0,0,.9);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:radial-gradient(1200px 600px at 12% -180px,rgba(47,84,255,.12),transparent 60%),var(--bg);
+body{background:radial-gradient(1200px 600px at 12% -180px,rgba(223,23,42,.12),transparent 60%),var(--bg);
   color:var(--ink);font:14.5px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing:antialiased;min-height:100vh}
 a{color:inherit;text-decoration:none}
@@ -38,7 +39,7 @@ a{color:inherit;text-decoration:none}
 .brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.015em}
 .brand .mark{width:38px;height:26px}
 .brand .v{font-size:16.5px}
-.tag{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.13em;color:#9fb0ff;text-transform:uppercase;white-space:nowrap;
+.tag{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.13em;color:#ffa0a8;text-transform:uppercase;white-space:nowrap;
   border:1px solid var(--line);border-radius:6px;padding:3px 7px;background:var(--grad-soft)}
 .sp{flex:1}
 .search{display:none;align-items:center;gap:8px;background:#0a0b15;border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--faint);font-size:13px;min-width:210px}
@@ -48,12 +49,12 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(135deg,#25dd85,#12b869);box-shadow:0 10px 24px -12px rgba(20,200,120,.9)}
 .buy svg{width:14px;height:14px;stroke:#04140c;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .bell{width:36px;height:36px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;color:var(--muted);cursor:pointer;position:relative}
-.bell:hover{color:var(--ink);border-color:rgba(47,84,255,.4)}
+.bell:hover{color:var(--ink);border-color:rgba(223,23,42,.4)}
 .bell svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .bell i{position:absolute;top:7px;right:8px;width:6px;height:6px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 2px var(--bg)}
 .acctwrap{position:relative}
 .acct{display:flex;align-items:center;gap:9px;cursor:pointer;background:transparent;border:1px solid transparent;border-radius:10px;padding:4px 8px 4px 4px;font:inherit;transition:background .15s,border-color .15s}
-.acct:hover,.acctwrap.open .acct{background:rgba(126,142,255,.06);border-color:var(--line)}
+.acct:hover,.acctwrap.open .acct{background:rgba(220,90,105,.06);border-color:var(--line)}
 .av{width:34px;height:34px;border-radius:9px;background:var(--grad);display:grid;place-items:center;font-weight:700;font-size:14px;color:#fff}
 .acct-txt{display:flex;flex-direction:column;text-align:left}
 .acct .nm{font-size:13px;font-weight:600;line-height:1.2}
@@ -68,7 +69,7 @@ a{color:inherit;text-decoration:none}
 .am-user .rl{font-size:11px;color:var(--faint)}
 .am-sep{height:1px;background:var(--line2);margin:5px 4px}
 .am-item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border-radius:9px;color:var(--ink2);cursor:pointer;font:inherit;font-size:13.5px;font-weight:550;background:transparent;border:0;text-align:left;transition:background .14s,color .14s}
-.am-item:hover{background:rgba(126,142,255,.07);color:#fff}
+.am-item:hover{background:rgba(220,90,105,.07);color:#fff}
 .am-item svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .am-item.danger{color:#ff8a94}
 .am-item.danger:hover{background:rgba(255,93,108,.1);color:#ff5d6c}
@@ -79,8 +80,8 @@ a{color:inherit;text-decoration:none}
 .navgroup:first-child{margin-top:2px}
 .nav{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:10px;color:var(--muted);cursor:pointer;font-weight:550;font-size:13.5px;border:1px solid transparent;transition:background .15s,color .15s,border-color .15s;position:relative}
 .nav svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.nav:hover{color:var(--ink);background:rgba(126,142,255,.05)}
-.nav.on{color:#fff;background:var(--grad-soft);border-color:rgba(47,84,255,.3)}
+.nav:hover{color:var(--ink);background:rgba(220,90,105,.05)}
+.nav.on{color:#fff;background:var(--grad-soft);border-color:rgba(223,23,42,.3)}
 .nav.on svg{stroke:var(--blue-hi)}
 .nav .badge{margin-left:auto;font-size:10.5px;font-weight:700;background:var(--blue);color:#fff;border-radius:20px;padding:1px 7px;font-variant-numeric:tabular-nums}
 .side .grow{flex:1}
@@ -103,7 +104,7 @@ main{padding:24px 26px 60px;max-width:1180px;overflow-x:hidden}
 .card{background:linear-gradient(180deg,var(--panel2),#07080f);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
 .ch{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
 .ch h3{font-size:14.5px;font-weight:700;margin:0;letter-spacing:-.01em}
-.link{font-size:12.5px;color:#8ea3ff;cursor:pointer;font-weight:600}.link:hover{color:#b6c4ff}
+.link{font-size:12.5px;color:#ff8a94;cursor:pointer;font-weight:600}.link:hover{color:#ffbcc2}
 
 .hero{display:grid;grid-template-columns:1.55fr 1fr;gap:16px}
 .navbig .k{color:var(--muted);font-size:12.5px;font-weight:600;letter-spacing:.02em}
@@ -114,11 +115,11 @@ main{padding:24px 26px 60px;max-width:1180px;overflow-x:hidden}
 .ranges{display:flex;gap:4px}
 .range{font-size:12px;font-weight:600;color:var(--muted);border:1px solid transparent;background:transparent;border-radius:8px;padding:5px 11px;cursor:pointer;font-family:inherit}
 .range:hover{color:var(--ink)}
-.range.on{color:#fff;background:var(--grad-soft);border-color:rgba(47,84,255,.3)}
+.range.on{color:#fff;background:var(--grad-soft);border-color:rgba(223,23,42,.3)}
 
 .chartwrap{position:relative;margin-top:16px}
 .chartwrap svg.chart{width:100%;height:210px;display:block;overflow:visible}
-.tip{position:absolute;pointer-events:none;transform:translate(-50%,-115%);background:#12142a;border:1px solid rgba(47,84,255,.5);border-radius:9px;padding:7px 11px;font-size:12.5px;opacity:0;transition:opacity .12s;white-space:nowrap;box-shadow:0 12px 30px -14px #000;z-index:5}
+.tip{position:absolute;pointer-events:none;transform:translate(-50%,-115%);background:#12142a;border:1px solid rgba(223,23,42,.5);border-radius:9px;padding:7px 11px;font-size:12.5px;opacity:0;transition:opacity .12s;white-space:nowrap;box-shadow:0 12px 30px -14px #000;z-index:5}
 .tip .v{font-weight:750;font-variant-numeric:tabular-nums}
 .tip .d{color:var(--faint);font-size:11px;margin-top:1px}
 
@@ -159,7 +160,7 @@ table{width:100%;border-collapse:collapse;min-width:520px}
 th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);font-weight:600;padding:0 12px 12px}
 th.r,td.r{text-align:right}
 td{padding:14px 12px;border-top:1px solid var(--line2);font-size:13.5px;font-variant-numeric:tabular-nums}
-tr.rowh:hover td{background:rgba(126,142,255,.035)}
+tr.rowh:hover td{background:rgba(220,90,105,.035)}
 td .co{display:flex;align-items:center;gap:11px}
 .logo{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-family:ui-monospace,monospace;font-weight:700;font-size:12px;color:#fff;border:1px solid rgba(255,255,255,.14);flex:none}
 td .co .nm{font-weight:650;font-variant-numeric:normal}
@@ -173,14 +174,14 @@ td .co .nm{font-weight:650;font-variant-numeric:normal}
 .deal .meta{font-size:12px;color:var(--faint);font-family:ui-monospace,monospace;margin-top:2px}
 .deal .desc{font-size:13px;color:var(--ink2);margin:12px 0 14px}
 .deal .prog{height:7px;border-radius:20px;background:#0a0b15;overflow:hidden}
-.deal .prog i{display:block;height:100%;background:linear-gradient(90deg,#4162ff,#5d78ff)}
+.deal .prog i{display:block;height:100%;background:linear-gradient(90deg,#ee1f31,#ff4d5e)}
 .deal .pf{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:7px}
 .deal .row2{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:10px;flex-wrap:wrap}
 .btn{border:0;cursor:pointer;font:inherit;font-weight:650;border-radius:10px;padding:10px 16px;display:inline-flex;align-items:center;gap:8px;transition:filter .2s,border-color .2s,background .2s}
-.btn-p{background:var(--grad);color:#fff;box-shadow:0 12px 28px -14px rgba(47,84,255,.9)}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 12px 28px -14px rgba(223,23,42,.9)}
 .btn-p:hover{filter:brightness(1.08)}
 .btn-o{background:transparent;color:var(--ink2);border:1px solid var(--line)}
-.btn-o:hover{color:#fff;border-color:rgba(47,84,255,.5)}
+.btn-o:hover{color:#fff;border-color:rgba(223,23,42,.5)}
 .btn.sm{padding:8px 14px;font-size:13px}
 .btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .buyvos{margin-top:14px;background:linear-gradient(135deg,#25dd85,#12b869);color:#04140c;box-shadow:0 12px 30px -10px rgba(20,200,120,.95),inset 0 1px 0 rgba(255,255,255,.35)}
@@ -205,7 +206,7 @@ td .co .nm{font-weight:650;font-variant-numeric:normal}
 .settingrow{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line2)}
 .settingrow:first-child{border-top:0}
 .settingrow .sk{font-size:13.5px}.settingrow .sd{font-size:12px;color:var(--faint);margin-top:2px}
-.tog{width:42px;height:24px;border-radius:20px;background:#141626;border:1px solid var(--line);position:relative;cursor:pointer;flex:none}
+.tog{width:42px;height:24px;border-radius:20px;background:#200a0c;border:1px solid var(--line);position:relative;cursor:pointer;flex:none}
 .tog.on{background:var(--blue)}
 .tog::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .18s}
 .tog.on::after{left:20px}
@@ -233,15 +234,19 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
 @media(max-width:600px){ .acct-txt,.acct .chev{display:none} main{padding:18px 15px 50px} .navbig .big{font-size:31px} .phead h1{font-size:20px} }
 @media(max-width:400px){ .bell{display:none} .brand .mark{width:34px;height:23px} }
 
-#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(8px);background:#12142a;border:1px solid rgba(47,84,255,.5);color:#dfe6ff;padding:11px 16px;border-radius:11px;font-size:14px;box-shadow:0 18px 40px -18px #000;z-index:99;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(8px);background:#12142a;border:1px solid rgba(223,23,42,.5);color:#ffe0e3;padding:11px 16px;border-radius:11px;font-size:14px;box-shadow:0 18px 40px -18px #000;z-index:99;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style></head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="vmark" viewBox="0 0 66 44">
-    <path d="M8 3 L27 39 L46 3" fill="none" stroke="#2f54ff" stroke-width="8.4" stroke-linejoin="miter" stroke-linecap="butt"/>
-    <path d="M39 33 c 3.7 -6.2 7.7 -6.2 11.4 0 s 7.7 6.2 11.4 0" fill="none" stroke="#2f54ff" stroke-width="6.4" stroke-linecap="round"/>
+  <symbol id="vmark" viewBox="0 0 90 60">
+    <path d="M8 6 L27 53 L46 6" fill="none" stroke="#df172a" stroke-width="11.6" stroke-linejoin="miter" stroke-linecap="butt"/>
+    <g stroke="#df172a" stroke-width="7.4" stroke-linecap="round">
+      <line x1="67" y1="24" x2="67" y2="50"/>
+      <line x1="55.7" y1="30.5" x2="78.3" y2="43.5"/>
+      <line x1="55.7" y1="43.5" x2="78.3" y2="30.5"/>
+    </g>
   </symbol>
 </defs></svg>
 
@@ -390,14 +395,14 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
     <section class="tab" id="deals">
       <div class="phead"><div><h1>Deal flow</h1><p>Vetted rounds open to Fund II LPs. Allocate directly from the portal.</p></div><span class="pill"><i></i>Q3 · 3 open</span></div>
       <div class="deal">
-        <div class="top"><span class="logo" style="background:linear-gradient(135deg,#4162ff,#1e3cf0)">AB</span><div><div class="nm" style="font-weight:700">Aperture Labs</div><div class="meta">Seed · $4M round · lead: VentureOS</div></div><span class="chip" style="margin-left:auto;color:#7ff0c0;border-color:rgba(31,209,138,.3)">allocation open</span></div>
+        <div class="top"><span class="logo" style="background:linear-gradient(135deg,#ee1f31,#b30d1f)">AB</span><div><div class="nm" style="font-weight:700">Aperture Labs</div><div class="meta">Seed · $4M round · lead: VentureOS</div></div><span class="chip" style="margin-left:auto;color:#7ff0c0;border-color:rgba(31,209,138,.3)">allocation open</span></div>
         <div class="desc">On-chain data availability layer for AI agents. Strong early traction with 3 ecosystem integrations; VentureOS leading the round.</div>
         <div class="prog"><i style="width:64%"></i></div>
         <div class="pf"><span>$2.56M committed</span><span>64% of $4M</span></div>
         <div class="row2"><div style="font-size:12px;color:var(--muted)">Min allocation <b class="num" style="color:var(--ink)">$2,500</b> · closes in 6 days</div><div><button class="btn btn-o sm" onclick="toast('Deal memo opens in the live portal.')">View memo</button> <button class="btn btn-p sm" onclick="toast('Allocation flow opens in the live portal.')">Allocate</button></div></div>
       </div>
       <div class="deal">
-        <div class="top"><span class="logo" style="background:linear-gradient(135deg,#7c5cff,#5d78ff)">SM</span><div><div class="nm" style="font-weight:700">Stormline</div><div class="meta">Series A · $9M round · co-invest</div></div><span class="chip" style="margin-left:auto;color:#f5b34a;border-color:rgba(245,179,74,.3)">closing soon</span></div>
+        <div class="top"><span class="logo" style="background:linear-gradient(135deg,#e0455f,#ff4d5e)">SM</span><div><div class="nm" style="font-weight:700">Stormline</div><div class="meta">Series A · $9M round · co-invest</div></div><span class="chip" style="margin-left:auto;color:#f5b34a;border-color:rgba(245,179,74,.3)">closing soon</span></div>
         <div class="desc">High-throughput perps exchange. 3 days left in the round; VentureOS pro-rata secured, LP co-invest allocation remaining.</div>
         <div class="prog"><i style="width:88%"></i></div>
         <div class="pf"><span>$7.9M committed</span><span>88% of $9M</span></div>
@@ -418,9 +423,9 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
       <div class="card"><div class="tablewrap"><table>
         <thead><tr><th>Company</th><th>Sector</th><th>Expected</th><th class="r">Status</th></tr></thead>
         <tbody>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#2f54ff,#1e3cf0)">LM</span><div class="nm">Lumen</div></div></td><td>infra · indexing</td><td>Seed · ~Q4 '26</td><td class="r"><span class="chip">diligence</span></td></tr>
+          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#df172a,#b30d1f)">LM</span><div class="nm">Lumen</div></div></td><td>infra · indexing</td><td>Seed · ~Q4 '26</td><td class="r"><span class="chip">diligence</span></td></tr>
           <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#12b869,#1fd18a)">DR</span><div class="nm">Drift Labs</div></div></td><td>defi · rwa</td><td>Series A · ~Q4 '26</td><td class="r"><span class="chip">tracking</span></td></tr>
-          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#5d78ff,#c3acff)">SG</span><div class="nm">Sigil</div></div></td><td>ai · security</td><td>Pre-seed · ~Q1 '27</td><td class="r"><span class="chip">tracking</span></td></tr>
+          <tr class="rowh"><td><div class="co"><span class="logo" style="background:linear-gradient(135deg,#ff4d5e,#ff9db0)">SG</span><div class="nm">Sigil</div></div></td><td>ai · security</td><td>Pre-seed · ~Q1 '27</td><td class="r"><span class="chip">tracking</span></td></tr>
         </tbody>
       </table></div></div>
     </section>
@@ -507,23 +512,23 @@ var PROFILES = {
     ],
     perfIRR:'47.2%',
     qbars:[{lab:"Q3'25",pct:34,val:'$29k'},{lab:"Q4'25",pct:48,val:'$41k'},{lab:"Q1'26",pct:62,val:'$52k'},{lab:"Q2'26",pct:100,val:'$72k'}],
-    alloc:[{label:'Infrastructure',pct:34,color:'#5d78ff'},{label:'DeFi',pct:24,color:'#1fd18a'},{label:'AI / Agents',pct:22,color:'#c3acff'},{label:'Gaming',pct:20,color:'#f5b34a'}],
+    alloc:[{label:'Infrastructure',pct:34,color:'#ff4d5e'},{label:'DeFi',pct:24,color:'#1fd18a'},{label:'AI / Agents',pct:22,color:'#ff9db0'},{label:'Gaming',pct:20,color:'#f5b34a'}],
     stage:[{k:'Pre-seed',pct:12},{k:'Seed',pct:41},{k:'Series A',pct:33},{k:'Series B+',pct:14}],
     holdingsPill:'Net MOIC 2.9×',
     holdings:[
-      {sym:'NX',name:'Nexus',tag:'infra · rpc',color:'linear-gradient(135deg,#1e3cf0,#5d78ff)',stage:'Series A',entry:"Q3 '24",mark:'4.1×',weight:82,wpct:'12%'},
+      {sym:'NX',name:'Nexus',tag:'infra · rpc',color:'linear-gradient(135deg,#b30d1f,#ff4d5e)',stage:'Series A',entry:"Q3 '24",mark:'4.1×',weight:82,wpct:'12%'},
       {sym:'OR',name:'Orbit',tag:'ai · agents',color:'linear-gradient(135deg,#12b869,#1fd18a)',stage:'Series B',entry:"Q1 '25",mark:'6.3×',weight:74,wpct:'11%'},
-      {sym:'VC',name:'VaultCore',tag:'infra · custody',color:'linear-gradient(135deg,#4b3bd8,#9d6bff)',stage:'Series A',entry:"Q4 '24",mark:'3.4×',weight:60,wpct:'9%'},
+      {sym:'VC',name:'VaultCore',tag:'infra · custody',color:'linear-gradient(135deg,#4b3bd8,#ff6f86)',stage:'Series A',entry:"Q4 '24",mark:'3.4×',weight:60,wpct:'9%'},
       {sym:'HX',name:'Helix',tag:'defi · perps',color:'linear-gradient(135deg,#0e9d6b,#1fd18a)',stage:'Seed',entry:"Q2 '25",mark:'2.7×',weight:52,wpct:'8%'},
       {sym:'PX',name:'Pixel Forge',tag:'gaming',color:'linear-gradient(135deg,#e0902a,#f5b34a)',stage:'Seed',entry:"Q1 '25",mark:'1.8×',weight:44,wpct:'7%'},
-      {sym:'AP',name:'Aperture',tag:'ai · data',color:'linear-gradient(135deg,#2f54ff,#1e3cf0)',stage:'Seed',entry:"Q2 '25",mark:'1.5×',weight:38,wpct:'6%'},
-      {sym:'QT',name:'Quanta',tag:'infra · zk',color:'linear-gradient(135deg,#5d78ff,#c3acff)',stage:'Pre-seed',entry:"Q2 '25",mark:'1.0×',flat:true,weight:22,wpct:'4%'}
+      {sym:'AP',name:'Aperture',tag:'ai · data',color:'linear-gradient(135deg,#df172a,#b30d1f)',stage:'Seed',entry:"Q2 '25",mark:'1.5×',weight:38,wpct:'6%'},
+      {sym:'QT',name:'Quanta',tag:'infra · zk',color:'linear-gradient(135deg,#ff4d5e,#ff9db0)',stage:'Pre-seed',entry:"Q2 '25",mark:'1.0×',flat:true,weight:22,wpct:'4%'}
     ],
     commitments:[
-      {sym:'NX',name:'Nexus',color:'linear-gradient(135deg,#1e3cf0,#5d78ff)',date:"Q3 '24",amount:'$6,000',status:'funded'},
+      {sym:'NX',name:'Nexus',color:'linear-gradient(135deg,#b30d1f,#ff4d5e)',date:"Q3 '24",amount:'$6,000',status:'funded'},
       {sym:'OR',name:'Orbit',color:'linear-gradient(135deg,#12b869,#1fd18a)',date:"Q1 '25",amount:'$4,000',status:'funded'},
-      {sym:'VC',name:'VaultCore',color:'linear-gradient(135deg,#4b3bd8,#9d6bff)',date:"Q4 '24",amount:'$5,000',status:'funded'},
-      {sym:'SM',name:'Stormline',color:'linear-gradient(135deg,#7c5cff,#5d78ff)',date:"Q2 '26",amount:'$5,000',status:'pending'}
+      {sym:'VC',name:'VaultCore',color:'linear-gradient(135deg,#4b3bd8,#ff6f86)',date:"Q4 '24",amount:'$5,000',status:'funded'},
+      {sym:'SM',name:'Stormline',color:'linear-gradient(135deg,#e0455f,#ff4d5e)',date:"Q2 '26",amount:'$5,000',status:'pending'}
     ],
     statements:[
       {date:'Jul 9, 2026',type:'Distribution',ref:'Nexus secondary',amount:'+$3,100',cls:'up'},
@@ -564,24 +569,24 @@ var PROFILES = {
     ],
     perfIRR:'61.8%',
     qbars:[{lab:"Q3'25",pct:30,val:'$96k'},{lab:"Q4'25",pct:52,val:'$150k'},{lab:"Q1'26",pct:74,val:'$198k'},{lab:"Q2'26",pct:100,val:'$237k'}],
-    alloc:[{label:'DeFi',pct:38,color:'#1fd18a'},{label:'AI / Agents',pct:30,color:'#c3acff'},{label:'Infrastructure',pct:18,color:'#5d78ff'},{label:'Consumer',pct:14,color:'#f5b34a'}],
+    alloc:[{label:'DeFi',pct:38,color:'#1fd18a'},{label:'AI / Agents',pct:30,color:'#ff9db0'},{label:'Infrastructure',pct:18,color:'#ff4d5e'},{label:'Consumer',pct:14,color:'#f5b34a'}],
     stage:[{k:'Pre-seed',pct:6},{k:'Seed',pct:28},{k:'Series A',pct:44},{k:'Series B+',pct:22}],
     holdingsPill:'Net MOIC 3.1×',
     holdings:[
       {sym:'MR',name:'Meridian',tag:'defi · lending',color:'linear-gradient(135deg,#0e9d6b,#1fd18a)',stage:'Series B',entry:"Q4 '24",mark:'5.8×',weight:88,wpct:'15%'},
-      {sym:'CB',name:'Cobalt',tag:'ai · infra',color:'linear-gradient(135deg,#4b3bd8,#9d6bff)',stage:'Series A',entry:"Q2 '25",mark:'3.9×',weight:70,wpct:'12%'},
-      {sym:'SB',name:'Sable',tag:'payments',color:'linear-gradient(135deg,#1e3cf0,#5d78ff)',stage:'Series A',entry:"Q3 '24",mark:'4.4×',weight:64,wpct:'11%'},
+      {sym:'CB',name:'Cobalt',tag:'ai · infra',color:'linear-gradient(135deg,#4b3bd8,#ff6f86)',stage:'Series A',entry:"Q2 '25",mark:'3.9×',weight:70,wpct:'12%'},
+      {sym:'SB',name:'Sable',tag:'payments',color:'linear-gradient(135deg,#b30d1f,#ff4d5e)',stage:'Series A',entry:"Q3 '24",mark:'4.4×',weight:64,wpct:'11%'},
       {sym:'FR',name:'Ferro',tag:'rwa · credit',color:'linear-gradient(135deg,#e0902a,#f5b34a)',stage:'Series B',entry:"Q1 '25",mark:'2.9×',weight:55,wpct:'9%'},
-      {sym:'HL',name:'Halcyon',tag:'ai · agents',color:'linear-gradient(135deg,#5d78ff,#c3acff)',stage:'Seed',entry:"Q2 '25",mark:'6.7×',weight:48,wpct:'8%'},
+      {sym:'HL',name:'Halcyon',tag:'ai · agents',color:'linear-gradient(135deg,#ff4d5e,#ff9db0)',stage:'Seed',entry:"Q2 '25",mark:'6.7×',weight:48,wpct:'8%'},
       {sym:'VX',name:'Vertex',tag:'infra · depin',color:'linear-gradient(135deg,#12b869,#1fd18a)',stage:'Series A',entry:"Q4 '24",mark:'3.2×',weight:40,wpct:'7%'},
-      {sym:'NV',name:'Nova',tag:'consumer · social',color:'linear-gradient(135deg,#7c5cff,#5d78ff)',stage:'Seed',entry:"Q1 '25",mark:'2.1×',weight:32,wpct:'5%'}
+      {sym:'NV',name:'Nova',tag:'consumer · social',color:'linear-gradient(135deg,#e0455f,#ff4d5e)',stage:'Seed',entry:"Q1 '25",mark:'2.1×',weight:32,wpct:'5%'}
     ],
     commitments:[
       {sym:'MR',name:'Meridian',color:'linear-gradient(135deg,#0e9d6b,#1fd18a)',date:"Q4 '24",amount:'$20,000',status:'funded'},
-      {sym:'CB',name:'Cobalt',color:'linear-gradient(135deg,#4b3bd8,#9d6bff)',date:"Q2 '25",amount:'$18,000',status:'funded'},
-      {sym:'SB',name:'Sable',color:'linear-gradient(135deg,#1e3cf0,#5d78ff)',date:"Q3 '24",amount:'$15,000',status:'funded'},
+      {sym:'CB',name:'Cobalt',color:'linear-gradient(135deg,#4b3bd8,#ff6f86)',date:"Q2 '25",amount:'$18,000',status:'funded'},
+      {sym:'SB',name:'Sable',color:'linear-gradient(135deg,#b30d1f,#ff4d5e)',date:"Q3 '24",amount:'$15,000',status:'funded'},
       {sym:'FR',name:'Ferro',color:'linear-gradient(135deg,#e0902a,#f5b34a)',date:"Q1 '25",amount:'$12,000',status:'funded'},
-      {sym:'HL',name:'Halcyon',color:'linear-gradient(135deg,#5d78ff,#c3acff)',date:"Q2 '26",amount:'$20,000',status:'pending'}
+      {sym:'HL',name:'Halcyon',color:'linear-gradient(135deg,#ff4d5e,#ff9db0)',date:"Q2 '26",amount:'$20,000',status:'pending'}
     ],
     statements:[
       {date:'Jul 2, 2026',type:'Distribution',ref:'Meridian secondary',amount:'+$9,400',cls:'up'},
@@ -675,10 +680,10 @@ function renderChart(range){
   for(var i=0;i<n;i++){ line+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(d[i]).toFixed(1)+' '; }
   var area=line+'L'+X(n-1).toFixed(1)+' '+VH+' L'+X(0).toFixed(1)+' '+VH+' Z';
   var grid='';
-  for(var g=1;g<=3;g++){ var gy=(PADT+(VH-PADT-PADB)*g/4).toFixed(1); grid+='<line x1="0" y1="'+gy+'" x2="'+VW+'" y2="'+gy+'" stroke="rgba(126,142,255,.08)" stroke-width="1"/>'; }
+  for(var g=1;g<=3;g++){ var gy=(PADT+(VH-PADT-PADB)*g/4).toFixed(1); grid+='<line x1="0" y1="'+gy+'" x2="'+VW+'" y2="'+gy+'" stroke="rgba(220,90,105,.08)" stroke-width="1"/>'; }
   var ex=X(n-1).toFixed(1), ey=Y(d[n-1]).toFixed(1);
   var svg=document.getElementById('navChart');
-  svg.innerHTML='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f54ff" stop-opacity=".34"/><stop offset="1" stop-color="#2f54ff" stop-opacity="0"/></linearGradient></defs>'+grid+'<path d="'+area+'" fill="url(#cg)"/><path d="'+line+'" fill="none" stroke="#5d78ff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/><circle cx="'+ex+'" cy="'+ey+'" r="4.5" fill="#5d78ff" stroke="#04040a" stroke-width="2"/><line id="cx" x1="0" y1="'+PADT+'" x2="0" y2="'+(VH-PADB)+'" stroke="#5d78ff" stroke-width="1" stroke-dasharray="3 3" opacity="0"/><circle id="cdot" r="4" fill="#fff" stroke="#5d78ff" stroke-width="2" opacity="0"/>';
+  svg.innerHTML='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#df172a" stop-opacity=".34"/><stop offset="1" stop-color="#df172a" stop-opacity="0"/></linearGradient></defs>'+grid+'<path d="'+area+'" fill="url(#cg)"/><path d="'+line+'" fill="none" stroke="#ff4d5e" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/><circle cx="'+ex+'" cy="'+ey+'" r="4.5" fill="#ff4d5e" stroke="#0a0406" stroke-width="2"/><line id="cx" x1="0" y1="'+PADT+'" x2="0" y2="'+(VH-PADB)+'" stroke="#ff4d5e" stroke-width="1" stroke-dasharray="3 3" opacity="0"/><circle id="cdot" r="4" fill="#fff" stroke="#ff4d5e" stroke-width="2" opacity="0"/>';
   svg._d=d; svg._X=X; svg._Y=Y;
 }
 (function wireHover(){
