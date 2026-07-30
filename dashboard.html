@@ -182,6 +182,7 @@ td .co .nm{font-weight:650;font-variant-numeric:normal}
 .btn-o:hover{color:#fff;border-color:rgba(47,84,255,.5)}
 .btn.sm{padding:8px 14px;font-size:13px}
 .btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.buyvos{margin-top:14px}
 
 /* docs */
 .docrow{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--line2)}
@@ -278,7 +279,14 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
     <!-- ============ OVERVIEW ============ -->
     <section class="tab on" id="overview">
       <div class="phead">
-        <div><h1>Welcome back, <span id="who1">investor</span>.</h1><p>Your VentureOS Fund II position at a glance.</p></div>
+        <div>
+          <h1>Welcome back, <span id="who1">investor</span>.</h1>
+          <p>Your VentureOS Fund II position at a glance.</p>
+          <a class="btn btn-p buyvos" id="buyVosBtn" href="#" onclick="toast('$VOS purchase link coming soon.');return false;">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.5 10h3.2a1.8 1.8 0 0 1 0 3.6H9.3"/></svg>
+            Buy $VOS
+          </a>
+        </div>
         <span class="pill"><i></i>NAV updated · today 09:00 ET</span>
       </div>
 
