@@ -50,9 +50,6 @@ a{color:inherit;text-decoration:none}
 .buy svg{width:14px;height:14px;stroke:#04140c;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .buy.alt{color:#fff;background:var(--grad);box-shadow:0 10px 24px -12px rgba(139,92,246,.9),inset 0 1px 0 rgba(255,255,255,.22)}
 .buy.alt svg{stroke:#fff}
-.buy.inert,.btn.inert{cursor:default}
-.buy.inert:hover,.btn.inert:hover{filter:none;transform:none}
-.buy.inert:active,.btn.inert:active{transform:none}
 .bell{width:36px;height:36px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;color:var(--muted);cursor:pointer;position:relative}
 .bell:hover{color:var(--ink);border-color:rgba(139,92,246,.4)}
 .bell svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -260,7 +257,7 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
   <a class="brand" href="dashboard.html"><svg class="mark"><use href="#vmark"/></svg><span class="v">VentureOS</span><span class="tag">Fund II</span></a>
   <span class="sp"></span>
   <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search portfolio…<kbd>⌘K</kbd></div>
-  <span class="buy alt inert"><span class="bw">Buy </span>$VOS</span>
+  <a class="buy alt" href="https://pump.fun/coin/4MCZ8JVgR5sjqDuQNe4Mvy2rnjci6CyBAPZLJWEnpump" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg><span class="bw">Buy </span>$VOS</a>
   <a class="buy" href="https://jup.ag/tokens/HmjCoarLh5duURfJ333DwfFiPyTCgFT35pRSAoP8pump" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg><span class="bw">Buy </span>$TOS</a>
   <button class="bell" onclick="toast('3 new updates in your data room.')" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg><i></i></button>
   <div class="acctwrap" id="acctWrap">
@@ -312,7 +309,7 @@ footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);color:
           <h1>Welcome back, <span id="who1">investor</span>.</h1>
           <p>Your VentureOS Fund II position at a glance.</p>
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px">
-            <span class="btn btn-p buyvos inert" id="buyVosBtn" style="margin-top:0">Buy $VOS</span>
+            <a class="btn btn-p buyvos" id="buyVosBtn" style="margin-top:0" href="https://pump.fun/coin/4MCZ8JVgR5sjqDuQNe4Mvy2rnjci6CyBAPZLJWEnpump" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.5 10h3.2a1.8 1.8 0 0 1 0 3.6H9.3"/></svg>Buy $VOS</a>
             <span class="voslive"><i></i>Live on July 30th</span>
           </div>
         </div>
